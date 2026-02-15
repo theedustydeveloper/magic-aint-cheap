@@ -6,12 +6,56 @@
     <title>Floor Generator - Magic Ain't Cheap</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .generator-section {
-            margin: 2rem 0;
+        :root {
+            /* Your provided Tailwind v4 / OKLCH Tokens */
+            --background: oklch(0.9885 0.0057 84.5659);
+            --foreground: oklch(0.3660 0.0251 49.6085);
+            --muted: oklch(0.9363 0.0218 83.2637);
+            --muted-foreground: oklch(0.5534 0.0116 58.0708);
+            --primary: oklch(0.5553 0.1455 48.9975);
+            --primary-foreground: oklch(1.0000 0 0);
+            --accent: oklch(0.9000 0.0500 74.9889);
+            --accent-foreground: oklch(0.4444 0.0096 73.6390);
+            --border: oklch(0.8866 0.0404 89.6994);
+            --radius: 0.3rem;
+            --font-sans: Oxanium, sans-serif;
+            --shadow-md: 0px 2px 3px 0px hsl(28 18% 25% / 0.18), 0px 2px 4px -1px hsl(28 18% 25% / 0.18);
         }
 
-        .challenge-list {
-            margin: 1rem 0;
+        .dark {
+            --background: oklch(0.2161 0.0061 56.0434);
+            --foreground: oklch(0.9699 0.0013 106.4238);
+            --muted: oklch(0.2330 0.0073 67.4563);
+            --primary: oklch(0.7049 0.1867 47.6044);
+            --accent: oklch(0.3598 0.0497 229.3202);
+            --border: oklch(0.3741 0.0087 67.5582);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .generator-section {
+            margin: 2.5rem 0;
+        }
+
+        .floor-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            text-transform: uppercase;
         }
 
         .challenge-item {
@@ -20,83 +64,75 @@
             gap: 1rem;
             padding: 0.75rem;
             margin: 0.5rem 0;
-            background: rgba(139, 75, 227, 0.1);
-            border-left: 4px solid var(--neon-purple);
-            border-radius: 4px;
+            background: var(--muted);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
         }
 
         .challenge-name {
             flex: 1;
-            padding: 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
+        /* HIDDEN STATE */
         .challenge-name.hidden {
-            background: var(--grease-black);
-            color: var(--grease-black);
+            background-color: var(--foreground);
+            color: var(--foreground);
             user-select: none;
+            cursor: default;
         }
 
+        /* REVEALED STATE */
         .challenge-name.revealed {
-            background: rgba(255, 107, 53, 0.2);
-            color: var(--text-light);
+            background: var(--accent);
+            color: var(--accent-foreground);
+            cursor: pointer;
+            border: 1px solid var(--border);
         }
 
         .challenge-name.revealed:hover {
-            background: rgba(255, 107, 53, 0.3);
-            border: 1px solid var(--neon-orange);
+            filter: brightness(1.1);
+            transform: translateX(5px);
         }
 
         .eye-icon {
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             padding: 0.5rem;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease;
             user-select: none;
         }
 
         .eye-icon:hover {
             transform: scale(1.2);
-            color: var(--neon-orange);
         }
 
-        .eye-icon.revealed {
+        .eye-icon.used {
             opacity: 0.3;
             pointer-events: none;
         }
 
         .generate-btn {
-            display: inline-block;
+            display: block;
+            margin: 2rem auto;
             padding: 1rem 3rem;
-            background: linear-gradient(45deg, var(--primary-purple), var(--primary-orange));
-            color: var(--text-light);
-            text-decoration: none;
-            border: 2px solid var(--neon-purple);
-            border-radius: 6px;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(139, 75, 227, 0.4);
-            font-size: 1.2rem;
-            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
         }
 
         .generate-btn:hover {
+            filter: brightness(1.1);
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(139, 75, 227, 0.6), 0 0 20px var(--neon-orange);
-            border-color: var(--neon-orange);
-        }
-
-        .floor-title {
-            color: var(--neon-orange);
-            font-size: 1.8rem;
-            margin: 1.5rem 0 1rem 0;
-            border-left: 4px solid var(--primary-orange);
-            padding-left: 1rem;
         }
     </style>
 </head>
@@ -105,28 +141,24 @@
 
     <div class="container">
         <h1>FLOOR 1 GENERATOR</h1>
-        <div class="content">
-            <p>Generate a random Floor 1 challenge layout for your playthrough. Click the eye icon to reveal each challenge name, then click the name to view details.</p>
-            
-            <div style="text-align: center;">
-                <button class="generate-btn" id="generateBtn">Generate Floor 1</button>
+        <p>Generate a random layout for Floor 1. Click the 👁️ icon to reveal a challenge, then click the name to see its rules.</p>
+        
+        <button class="generate-btn" id="generateBtn">Generate Floor 1</button>
+
+        <div id="floorContent" style="display: none;">
+            <div class="generator-section">
+                <h2 class="floor-title">Level 1</h2>
+                <div class="challenge-list" id="level1List"></div>
             </div>
 
-            <div id="floorContent" style="display: none;">
-                <div class="generator-section">
-                    <h2 class="floor-title">Level 1 Challenges</h2>
-                    <div class="challenge-list" id="level1List"></div>
-                </div>
+            <div class="generator-section">
+                <h2 class="floor-title">Level 2</h2>
+                <div class="challenge-list" id="level2List"></div>
+            </div>
 
-                <div class="generator-section">
-                    <h2 class="floor-title">Level 2 Challenges</h2>
-                    <div class="challenge-list" id="level2List"></div>
-                </div>
-
-                <div class="generator-section">
-                    <h2 class="floor-title">Boss Challenge</h2>
-                    <div class="challenge-list" id="bossList"></div>
-                </div>
+            <div class="generator-section">
+                <h2 class="floor-title">Floor Boss</h2>
+                <div class="challenge-list" id="bossList"></div>
             </div>
         </div>
     </div>
@@ -136,7 +168,7 @@
     <script>
         let challengesData = [];
 
-        // Load challenges data
+        // Load your updated JSON
         fetch('data/challenges.json')
             .then(response => response.json())
             .then(data => {
@@ -144,62 +176,59 @@
             })
             .catch(error => console.error('Error loading challenges:', error));
 
-        // Generate random floor
         document.getElementById('generateBtn').addEventListener('click', function() {
-            if (challengesData.length === 0) {
-                alert('Challenges data is still loading. Please try again.');
-                return;
-            }
+            if (challengesData.length === 0) return;
 
-            // Filter challenges
-            const level1Challenges = challengesData.filter(c => c.ID.startsWith('L1-'));
-            const level2Challenges = challengesData.filter(c => c.ID.startsWith('L2-'));
-            const bossChallenges = challengesData.filter(c => c.ID.startsWith('BOSS-F1-'));
+            // Sorting logic using the IDs from your CSV
+            const level1 = challengesData.filter(c => c.ID.startsWith('L1-'));
+            const level2 = challengesData.filter(c => c.ID.startsWith('L2-'));
+            const boss = challengesData.filter(c => c.ID.startsWith('BOSS-F1-'));
 
-            // Get random selections
-            const selectedLevel1 = getRandomItems(level1Challenges, 3);
-            const selectedLevel2 = getRandomItems(level2Challenges, 3);
-            const selectedBoss = getRandomItems(bossChallenges, 1);
+            displayChallenges('level1List', getRandomItems(level1, 3));
+            displayChallenges('level2List', getRandomItems(level2, 3));
+            displayChallenges('bossList', getRandomItems(boss, 1));
 
-            // Display challenges
-            displayChallenges('level1List', selectedLevel1);
-            displayChallenges('level2List', selectedLevel2);
-            displayChallenges('bossList', selectedBoss);
-
-            // Show the content
             document.getElementById('floorContent').style.display = 'block';
         });
 
-        // Get random items from array
         function getRandomItems(array, count) {
-            const shuffled = [...array].sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, count);
+            return [...array].sort(() => 0.5 - Math.random()).slice(0, count);
         }
 
-        // Display challenges in list
         function displayChallenges(listId, challenges) {
             const list = document.getElementById(listId);
             list.innerHTML = '';
 
-            challenges.forEach((challenge, index) => {
+            challenges.forEach((challenge) => {
                 const item = document.createElement('div');
                 item.className = 'challenge-item';
                 
                 const eyeIcon = document.createElement('span');
                 eyeIcon.className = 'eye-icon';
                 eyeIcon.innerHTML = '👁️';
-                eyeIcon.onclick = function() {
-                    nameDiv.classList.remove('hidden');
-                    nameDiv.classList.add('revealed');
-                    eyeIcon.classList.add('revealed');
-                };
 
                 const nameDiv = document.createElement('div');
                 nameDiv.className = 'challenge-name hidden';
                 nameDiv.textContent = challenge.Thematic_Name;
+
+                // Reveal Interaction
+                eyeIcon.onclick = function(e) {
+                    e.stopPropagation();
+                    nameDiv.classList.remove('hidden');
+                    nameDiv.classList.add('revealed');
+                    eyeIcon.classList.add('used');
+                    eyeIcon.innerHTML = '✨'; 
+                };
+
+                // Detail View Interaction
                 nameDiv.onclick = function() {
                     if (nameDiv.classList.contains('revealed')) {
-                        openModal(challenge, 'challenge');
+                        // Triggers the modal logic from your main.js
+                        if (typeof openModal === "function") {
+                            openModal(challenge, 'challenge');
+                        } else {
+                            console.log("Modal data:", challenge);
+                        }
                     }
                 };
 

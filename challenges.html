@@ -13,26 +13,75 @@
     <div class="container">
         <h1>CHALLENGES & ENCOUNTERS</h1>
         
-        <!-- Challenges -->
+        <!-- Level 1 Challenges -->
         <div class="content">
-            <h2>Challenge Cards</h2>
-            <p>All Challenges from The Gauntlet including Combat, Skill, Hybrid encounters, and Boss fights. Click any row to view details.</p>
-            
-            <table id="challengesTable" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Difficulty</th>
-                        <th>Monsters</th>
-                        <th>Win Condition</th>
-                        <th>Success Reward</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be loaded via JavaScript -->
-                </tbody>
-            </table>
+            <h2>Level 1 Challenges</h2>
+            <p>Combat, Skill, and Hybrid encounters for Level 1. Click any row to view details.</p>
+
+            <div style="overflow-x: auto;">
+                <table id="level1Table" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Difficulty</th>
+                            <th>Monsters</th>
+                            <th>Win Condition</th>
+                            <th>Success Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Level 2 Challenges -->
+        <div class="content">
+            <h2>Level 2 Challenges</h2>
+            <p>Combat, Skill, and Hybrid encounters for Level 2. Click any row to view details.</p>
+
+            <div style="overflow-x: auto;">
+                <table id="level2Table" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Difficulty</th>
+                            <th>Monsters</th>
+                            <th>Win Condition</th>
+                            <th>Success Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Boss Challenges -->
+        <div class="content">
+            <h2>Boss Encounters</h2>
+            <p>Floor boss fights. Click any row to view details.</p>
+
+            <div style="overflow-x: auto;">
+                <table id="bossTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Difficulty</th>
+                            <th>Monsters</th>
+                            <th>Win Condition</th>
+                            <th>Success Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Monsters -->
@@ -89,13 +138,19 @@
         fetch('data/challenges.json')
             .then(response => response.json())
             .then(data => {
-                const table = $('#challengesTable').DataTable({
-                    data: data,
+                // Filter data
+                const level1Data = data.filter(c => c.Level === '1' && c.Type !== 'Boss');
+                const level2Data = data.filter(c => c.Level === '2' && c.Type !== 'Boss');
+                const bossData = data.filter(c => c.Type === 'Boss');
+
+                // Level 1 Table
+                const level1Table = $('#level1Table').DataTable({
+                    data: level1Data,
                     columns: [
                         { data: 'Thematic_Name' },
                         { data: 'Type' },
                         { data: 'Difficulty' },
-                        { 
+                        {
                             data: 'Monsters',
                             render: function(data, type, row) {
                                 if (data === 'None' || !data) return 'None';
@@ -103,23 +158,102 @@
                             }
                         },
                         { data: 'Win_Condition' },
-                        { 
+                        {
                             data: 'Success_Gold',
                             render: function(data, type, row) {
                                 let reward = data;
                                 if (row.Success_Bonus !== 'None') {
-                                    reward += ` + ${row.Success_Bonus}`;
+                                    reward += ` & ${row.Success_Bonus}`;
                                 }
                                 return reward;
                             }
                         }
                     ],
-                    pageLength: 15,
-                    order: [[0, 'asc']]
+                    pageLength: 10,
+                    order: [[0, 'asc']],
+                    scrollX: true,
+                    autoWidth: false
                 });
 
-                $('#challengesTable tbody').on('click', 'tr', function() {
-                    const rowData = table.row(this).data();
+                $('#level1Table tbody').on('click', 'tr', function() {
+                    const rowData = level1Table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'challenge');
+                    }
+                });
+
+                // Level 2 Table
+                const level2Table = $('#level2Table').DataTable({
+                    data: level2Data,
+                    columns: [
+                        { data: 'Thematic_Name' },
+                        { data: 'Type' },
+                        { data: 'Difficulty' },
+                        {
+                            data: 'Monsters',
+                            render: function(data, type, row) {
+                                if (data === 'None' || !data) return 'None';
+                                return `${data} (${row['Monster_Count_1-2P']}/${row['Monster_Count_3-4P']})`;
+                            }
+                        },
+                        { data: 'Win_Condition' },
+                        {
+                            data: 'Success_Gold',
+                            render: function(data, type, row) {
+                                let reward = data;
+                                if (row.Success_Bonus !== 'None') {
+                                    reward += ` & ${row.Success_Bonus}`;
+                                }
+                                return reward;
+                            }
+                        }
+                    ],
+                    pageLength: 10,
+                    order: [[0, 'asc']],
+                    scrollX: true,
+                    autoWidth: false
+                });
+
+                $('#level2Table tbody').on('click', 'tr', function() {
+                    const rowData = level2Table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'challenge');
+                    }
+                });
+
+                // Boss Table
+                const bossTable = $('#bossTable').DataTable({
+                    data: bossData,
+                    columns: [
+                        { data: 'Thematic_Name' },
+                        { data: 'Difficulty' },
+                        {
+                            data: 'Monsters',
+                            render: function(data, type, row) {
+                                if (data === 'None' || !data) return 'None';
+                                return `${data} (${row['Monster_Count_1-2P']}/${row['Monster_Count_3-4P']})`;
+                            }
+                        },
+                        { data: 'Win_Condition' },
+                        {
+                            data: 'Success_Gold',
+                            render: function(data, type, row) {
+                                let reward = data;
+                                if (row.Success_Bonus !== 'None') {
+                                    reward += ` & ${row.Success_Bonus}`;
+                                }
+                                return reward;
+                            }
+                        }
+                    ],
+                    pageLength: 10,
+                    order: [[0, 'asc']],
+                    scrollX: true,
+                    autoWidth: false
+                });
+
+                $('#bossTable tbody').on('click', 'tr', function() {
+                    const rowData = bossTable.row(this).data();
                     if (rowData) {
                         openModal(rowData, 'challenge');
                     }
