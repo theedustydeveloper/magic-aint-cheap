@@ -18,7 +18,6 @@ class NavComponent extends HTMLElement {
                     <li><a href="glossary.html">Glossary</a></li>
                     <li><a href="rewards.html">Reward Cards</a></li>
                     <li><a href="challenges.html">Challenges</a></li>
-                    <li><a href="treasure.html">Treasure</a></li>
                     <li><a href="floor-generator.html">Floor Generator</a></li>
                     <li><a href="game-maps.html">Game Maps</a></li>
                     <li><a href="changelog.html">Changelog</a></li>

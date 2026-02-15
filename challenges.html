@@ -10,122 +10,169 @@
 <body>
     <nav-component></nav-component>
 
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <div class="page-banner-bg"></div>
+        <div class="page-banner-overlay"></div>
+
+        <!-- Floating Accent Elements -->
+        <div class="banner-accent banner-accent-1"></div>
+        <div class="banner-accent banner-accent-2"></div>
+        <div class="banner-accent banner-accent-3"></div>
+        <div class="banner-accent banner-accent-4"></div>
+
+        <div class="page-banner-content">
+            <h1 class="page-banner-title">CHALLENGES & ENCOUNTERS</h1>
+            <p class="page-banner-description">Battle fierce monsters, solve cunning puzzles, and overcome deadly trials in The Gauntlet. Choose your challenge wisely—victory brings rewards, but failure has consequences.</p>
+        </div>
+    </div>
+
     <div class="container">
-        <h1>CHALLENGES & ENCOUNTERS</h1>
-        
-        <!-- Level 1 Challenges -->
+        <!-- Challenge Tabs -->
         <div class="content">
-            <h2>Level 1 Challenges</h2>
-            <p>Combat, Skill, and Hybrid encounters for Level 1. Click any row to view details.</p>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="level1">Level 1</button>
+                <button class="tab-button" data-tab="level2">Level 2</button>
+                <button class="tab-button" data-tab="boss">Boss Fights</button>
+            </div>
 
-            <div style="overflow-x: auto;">
-                <table id="level1Table" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Difficulty</th>
-                            <th>Monsters</th>
-                            <th>Win Condition</th>
-                            <th>Success Reward</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be loaded via JavaScript -->
-                    </tbody>
-                </table>
+            <div class="tab-content">
+                <!-- Level 1 Tab -->
+                <div id="level1" class="tab-panel active">
+                    <p>Combat, Skill, and Hybrid encounters for Level 1. Click any row to view details.</p>
+                    <div style="overflow-x: auto;">
+                        <table id="level1Table" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Difficulty</th>
+                                    <th>Monsters</th>
+                                    <th>Win Condition</th>
+                                    <th>Success Reward</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Level 2 Tab -->
+                <div id="level2" class="tab-panel">
+                    <p>Combat, Skill, and Hybrid encounters for Level 2. Click any row to view details.</p>
+                    <div style="overflow-x: auto;">
+                        <table id="level2Table" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Difficulty</th>
+                                    <th>Monsters</th>
+                                    <th>Win Condition</th>
+                                    <th>Success Reward</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Boss Tab -->
+                <div id="boss" class="tab-panel">
+                    <p>Floor boss fights. Click any row to view details.</p>
+                    <div style="overflow-x: auto;">
+                        <table id="bossTable" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Difficulty</th>
+                                    <th>Monsters</th>
+                                    <th>Win Condition</th>
+                                    <th>Success Reward</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be loaded via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Level 2 Challenges -->
+        <!-- Card Tabs -->
         <div class="content">
-            <h2>Level 2 Challenges</h2>
-            <p>Combat, Skill, and Hybrid encounters for Level 2. Click any row to view details.</p>
-
-            <div style="overflow-x: auto;">
-                <table id="level2Table" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Difficulty</th>
-                            <th>Monsters</th>
-                            <th>Win Condition</th>
-                            <th>Success Reward</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be loaded via JavaScript -->
-                    </tbody>
-                </table>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="monsters">Monsters</button>
+                <button class="tab-button" data-tab="environments">Environments</button>
+                <button class="tab-button" data-tab="treasure">Treasure</button>
             </div>
-        </div>
 
-        <!-- Boss Challenges -->
-        <div class="content">
-            <h2>Boss Encounters</h2>
-            <p>Floor boss fights. Click any row to view details.</p>
+            <div class="tab-content">
+                <!-- Monsters Tab -->
+                <div id="monsters" class="tab-panel active">
+                    <p>Enemy creatures you'll face in The Gauntlet. Click any row to view full stats and abilities.</p>
+                    <table id="monstersTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Tier</th>
+                                <th>HP</th>
+                                <th>Initiative</th>
+                                <th>Weapon</th>
+                                <th>Abilities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be loaded via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
 
-            <div style="overflow-x: auto;">
-                <table id="bossTable" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Difficulty</th>
-                            <th>Monsters</th>
-                            <th>Win Condition</th>
-                            <th>Success Reward</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be loaded via JavaScript -->
-                    </tbody>
-                </table>
+                <!-- Environments Tab -->
+                <div id="environments" class="tab-panel">
+                    <p>Arena conditions that affect all participants. Click any row to view details.</p>
+                    <table id="environmentsTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Floor</th>
+                                <th>Effect</th>
+                                <th>Affects</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be loaded via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Treasure Tab -->
+                <div id="treasure" class="tab-panel">
+                    <p>Bonus loot that randomly appears in Challenges. Treasure cards require Skill Tests to unlock their rewards. Click any row to view details.</p>
+                    <table id="treasureTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Floor</th>
+                                <th>Difficulty</th>
+                                <th>Tests</th>
+                                <th>Reward Type</th>
+                                <th>Reward</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be loaded via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-
-        <!-- Monsters -->
-        <div class="content">
-            <h2>Monster Cards</h2>
-            <p>Enemy creatures you'll face in The Gauntlet. Click any row to view full stats and abilities.</p>
-            
-            <table id="monstersTable" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Tier</th>
-                        <th>HP</th>
-                        <th>Initiative</th>
-                        <th>Weapon</th>
-                        <th>Abilities</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be loaded via JavaScript -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Environments -->
-        <div class="content">
-            <h2>Environment Cards</h2>
-            <p>Arena conditions that affect all participants. Click any row to view details.</p>
-            
-            <table id="environmentsTable" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Floor</th>
-                        <th>Effect</th>
-                        <th>Affects</th>
-                        <th>Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be loaded via JavaScript -->
-                </tbody>
-            </table>
         </div>
     </div>
 
@@ -319,6 +366,57 @@
                 });
             })
             .catch(error => console.error('Error loading environments:', error));
+
+        // Load Treasure
+        fetch('data/treasure.json')
+            .then(response => response.json())
+            .then(data => {
+                const table = $('#treasureTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'Card_Name' },
+                        { data: 'Floor' },
+                        { data: 'Difficulty' },
+                        {
+                            data: 'Test_Count',
+                            render: function(data, type, row) {
+                                return `${data} (${row.Test_Composition})`;
+                            }
+                        },
+                        { data: 'Reward_Type' },
+                        { data: 'Reward_Details' }
+                    ],
+                    pageLength: 15,
+                    order: [[0, 'asc']]
+                });
+
+                $('#treasureTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'treasure');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading treasure cards:', error));
+
+        // Tab Switching Functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the parent content container
+                const parentContent = button.closest('.content');
+
+                // Remove active class from buttons and panels within this container
+                parentContent.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                parentContent.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Show corresponding panel
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>

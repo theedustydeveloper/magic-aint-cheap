@@ -217,4 +217,150 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ===== PAGE BANNER EFFECTS =====
+    initPageBanner();
+    initHomepageHero();
 });
+
+function initPageBanner() {
+    const banner = document.querySelector('.page-banner');
+    if (!banner) return;
+
+    const bannerBg = banner.querySelector('.page-banner-bg');
+    const accents = banner.querySelectorAll('.banner-accent');
+
+    // Parallax scroll effect
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallaxSpeed = 0.5;
+
+                if (bannerBg) {
+                    bannerBg.style.transform = `translateY(${scrolled * parallaxSpeed}px) scale(1.1)`;
+                }
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Mouse movement effect for accent elements
+    let mouseX = 0;
+    let mouseY = 0;
+    let bannerRect = banner.getBoundingClientRect();
+
+    // Update banner rect on resize
+    window.addEventListener('resize', () => {
+        bannerRect = banner.getBoundingClientRect();
+    });
+
+    banner.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX - bannerRect.left;
+        mouseY = e.clientY - bannerRect.top;
+
+        accents.forEach((accent, index) => {
+            // Different movement speeds for each accent
+            const speed = (index + 1) * 0.02;
+            const centerX = bannerRect.width / 2;
+            const centerY = bannerRect.height / 2;
+
+            const deltaX = (mouseX - centerX) * speed;
+            const deltaY = (mouseY - centerY) * speed;
+
+            // Add rotation for some accents
+            const rotation = index % 2 === 0 ? (mouseX - centerX) * 0.01 : 0;
+
+            accent.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${rotation}deg)`;
+        });
+    });
+
+    // Reset positions when mouse leaves
+    banner.addEventListener('mouseleave', () => {
+        accents.forEach((accent) => {
+            accent.style.transform = 'translate(0, 0) rotate(0deg)';
+        });
+    });
+
+    // Add floating animation
+    accents.forEach((accent, index) => {
+        const delay = index * 0.5;
+        const duration = 3 + (index * 0.5);
+
+        accent.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+    });
+}
+
+function initHomepageHero() {
+    const hero = document.querySelector('.homepage-hero');
+    if (!hero) return;
+
+    const heroBg = hero.querySelector('.homepage-hero-bg');
+    const accents = hero.querySelectorAll('.banner-accent');
+
+    // Parallax scroll effect
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallaxSpeed = 0.5;
+
+                if (heroBg) {
+                    heroBg.style.transform = `translateY(${scrolled * parallaxSpeed}px) scale(1.1)`;
+                }
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Mouse movement effect for accent elements
+    let mouseX = 0;
+    let mouseY = 0;
+    let heroRect = hero.getBoundingClientRect();
+
+    // Update hero rect on resize
+    window.addEventListener('resize', () => {
+        heroRect = hero.getBoundingClientRect();
+    });
+
+    hero.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX - heroRect.left;
+        mouseY = e.clientY - heroRect.top;
+
+        accents.forEach((accent, index) => {
+            const speed = (index + 1) * 0.02;
+            const centerX = heroRect.width / 2;
+            const centerY = heroRect.height / 2;
+
+            const deltaX = (mouseX - centerX) * speed;
+            const deltaY = (mouseY - centerY) * speed;
+
+            const rotation = index % 2 === 0 ? (mouseX - centerX) * 0.01 : 0;
+
+            accent.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${rotation}deg)`;
+        });
+    });
+
+    // Reset positions when mouse leaves
+    hero.addEventListener('mouseleave', () => {
+        accents.forEach((accent) => {
+            accent.style.transform = 'translate(0, 0) rotate(0deg)';
+        });
+    });
+
+    // Add floating animation
+    accents.forEach((accent, index) => {
+        const delay = index * 0.5;
+        const duration = 3 + (index * 0.5);
+
+        accent.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+    });
+}

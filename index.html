@@ -11,106 +11,206 @@
 <body>
     <nav-component></nav-component>
 
+    <!-- Hero Section -->
+    <section class="homepage-hero">
+        <div class="homepage-hero-bg"></div>
+        <div class="homepage-hero-overlay"></div>
+
+        <!-- Floating Accent Elements -->
+        <div class="banner-accent banner-accent-1"></div>
+        <div class="banner-accent banner-accent-2"></div>
+        <div class="banner-accent banner-accent-3"></div>
+        <div class="banner-accent banner-accent-4"></div>
+
+        <div class="homepage-hero-content">
+            <img src="images/MAClogo.png" alt="Magic Ain't Cheap" class="hero-logo">
+            <h1 class="hero-title">THE GAUNTLET</h1>
+            <p class="hero-subtitle">The galaxy's most popular death sport. Where magic isn't just power—it's currency.</p>
+            <div class="hero-cta">
+                <a href="rules.html" class="btn btn-primary">Start Playing</a>
+                <a href="#game-overview" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
-        <div class="hero">
-            <h1>MAGIC AIN'T CHEAP</h1>
-            <p>Welcome to The Gauntlet - the realm's most popular death sport...</p>
-        </div>
+        <!-- Welcome Section -->
+        <section class="welcome-section" id="game-overview">
+            <div class="section-header">
+                <h2>Welcome to The Gauntlet</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="welcome-grid">
+                <div class="welcome-content">
+                    <p class="lead-text">
+                        You've been selected to compete in <strong>The Gauntlet</strong>, the realm's most popular death sport
+                        and the ultimate test of skill, strategy, and survival. Broadcast across countless systems, this
+                        dystopian game show throws contestants into deadly challenges where magic isn't just power—it's
+                        currency.
+                    </p>
+                    <p>
+                        Every spell you cast, every weapon you swing, every piece of armor you wear must be purchased with
+                        hard-earned Gold. The cameras are rolling, the audience is watching, and only the strongest, smartest,
+                        and wealthiest will survive.
+                    </p>
+                </div>
+                <div class="welcome-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎲</div>
+                        <div class="stat-number">1-4</div>
+                        <div class="stat-label">Players</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-number">2-3</div>
+                        <div class="stat-label">Hours</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Floors</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="content">
-            <h2>Welcome to The Gauntlet</h2>
-            <p>
-                You've been selected to compete in <strong>The Gauntlet</strong>, the galaxy's most popular death sport
-                and the ultimate test of skill, strategy, and survival. Broadcast across countless systems, this
-                dystopian game show throws contestants into deadly challenges where magic isn't just power—it's
-                currency.
-            </p>
-            <p>
-                Every spell you cast, every weapon you swing, every piece of armor you wear must be purchased with
-                hard-earned Gold. The cameras are rolling, the audience is watching, and only the strongest, smartest,
-                and wealthiest will survive.
-            </p>
+        <!-- Features Grid -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Game Features</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Cooperative Play</h3>
+                    <p><strong>Magic Ain't Cheap</strong> is designed for 1-4 players working together as a team. This is a fully cooperative game—you win together or fail together. The game automatically scales difficulty based on your party size.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>Three Difficulty Modes</h3>
+                    <ul class="feature-list">
+                        <li><strong>Easy:</strong> Draw 6 cards. Trade freely.</li>
+                        <li><strong>Medium:</strong> Draw 5 cards. Trading costs 5 Gold.</li>
+                        <li><strong>Hard:</strong> Draw 4 cards. No trading.</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>The Gauntlet Structure</h3>
+                    <p>Three brutal Floors, each with six deadly Challenges and one massive Boss fight. Start with almost nothing and level up as you progress, unlocking increasingly powerful gear.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💀</div>
+                    <h3>Death & Revival</h3>
+                    <p>Death is temporary thanks to corporate revival technology. Respawn in the Green Room after being knocked out—but failure comes with consequences: lost Gold, heavy damage, and setbacks.</p>
+                </div>
+            </div>
+        </section>
 
-            <h2>Game Overview</h2>
-            <h3>Player Count & Cooperation</h3>
-            <p>
-                <strong>Magic Ain't Cheap</strong> is designed for 1-4 players working together as a team. This is a
-                fully cooperative game—you win together or fail together. The game automatically scales difficulty
-                based on your party size.
-            </p>
+        <!-- Core Mechanics -->
+        <section class="mechanics-section">
+            <div class="section-header">
+                <h2>Core Mechanics</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="mechanics-grid">
+                <div class="mechanic-card mechanic-primary">
+                    <div class="mechanic-header">
+                        <span class="mechanic-badge">Economy</span>
+                        <h3>Gold System</h3>
+                    </div>
+                    <p>Everything costs Gold. Every spell, weapon, armor piece, and enhancement must be purchased. Manage your resources carefully—running out of Gold means running out of options.</p>
+                </div>
+                <div class="mechanic-card mechanic-secondary">
+                    <div class="mechanic-header">
+                        <span class="mechanic-badge">Combat</span>
+                        <h3>Dice Pool System</h3>
+                    </div>
+                    <p>Your dice pool represents your energy and actions. Start with one die and earn more by defeating Bosses. Use dice to attack, cast spells, and activate abilities. Exhausted dice return after completing challenges.</p>
+                </div>
+                <div class="mechanic-card mechanic-accent">
+                    <div class="mechanic-header">
+                        <span class="mechanic-badge">Strategy</span>
+                        <h3>The Green Room</h3>
+                    </div>
+                    <p>Between challenges, rest in the Green Room—a safe zone where you can heal through Resting Rolls, shop for better gear, and prepare for what's ahead. Time is money, and every decision counts.</p>
+                </div>
+            </div>
+        </section>
 
-            <h3>Difficulty Modes</h3>
-            <ul>
-                <li><strong>Easy Mode:</strong> Draw 6 cards during Reward Drafts. Trade freely with teammates.</li>
-                <li><strong>Medium Mode:</strong> Draw 5 cards during Reward Drafts. Trading costs 5 Gold per card.</li>
-                <li><strong>Hard Mode:</strong> Draw only 4 cards during Reward Drafts. Trading forbidden.</li>
-            </ul>
+        <!-- Game Length Timeline -->
+        <section class="timeline-section">
+            <div class="section-header">
+                <h2>Campaign Timeline</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Floor 1</h3>
+                        <p class="timeline-duration">30-45 minutes</p>
+                        <p>Start your journey with basic equipment and one die.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Floor 2</h3>
+                        <p class="timeline-duration">45-60 minutes</p>
+                        <p>Face tougher challenges with upgraded gear and abilities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Floor 3</h3>
+                        <p class="timeline-duration">60-90 minutes</p>
+                        <p>Ultimate test against the Final Boss. Victory or defeat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <h3>Game Length</h3>
-            <p>
-                A complete campaign takes approximately 2-3 hours to complete all three Floors:
-            </p>
-            <ul>
-                <li>Floor 1: 30-45 minutes</li>
-                <li>Floor 2: 45-60 minutes</li>
-                <li>Floor 3: 60-90 minutes</li>
-            </ul>
+        <!-- Win Condition -->
+        <section class="win-section">
+            <div class="win-content">
+                <h2>Can You Survive?</h2>
+                <p>Can you and your team survive all three Floors and defeat the Final Boss? Or will you run out of Gold, HP, or luck before the final credits roll?</p>
+                <p class="win-tagline">Let's find out. The show is about to begin.</p>
+            </div>
+        </section>
 
-            <h3>The Gauntlet Structure</h3>
-            <p>
-                The Gauntlet consists of three brutal Floors, each with six deadly Challenges and one massive Boss
-                fight. You'll start with almost nothing—just one die and a handful of basic equipment. As you progress,
-                you'll level up, gain more dice, and unlock increasingly powerful gear.
-            </p>
-
-            <h2>Core Mechanics</h2>
-            <h3>Gold Economy</h3>
-            <p>
-                Everything costs Gold. Every spell, weapon, armor piece, and enhancement must be purchased. Manage
-                your resources carefully—running out of Gold means running out of options.
-            </p>
-
-            <h3>Dice Pool System</h3>
-            <p>
-                Your dice pool represents your energy and actions. Start with one die and earn more by defeating
-                Bosses. Use dice to attack, cast spells, and activate abilities. Exhausted dice return after
-                completing challenges.
-            </p>
-
-            <h3>The Green Room</h3>
-            <p>
-                Between challenges, rest in the Green Room—a safe zone where you can heal through Resting Rolls,
-                shop for better gear, and prepare for what's ahead. Time is money, and every decision counts.
-            </p>
-
-            <h2>Death & Revival</h2>
-            <p>
-                Death is temporary in The Gauntlet. Thanks to corporate sponsorship and cutting-edge revival technology,
-                contestants respawn in the Green Room after being knocked out. However, failure comes with consequences:
-                you'll lose precious Gold, take heavy damage, and fall behind your competitors.
-            </p>
-
-            <h2>Win Condition</h2>
-            <p>
-                Can you and your team survive all three Floors and defeat the Final Boss? Or will you run out of Gold,
-                HP, or luck before the final credits roll?
-            </p>
-            <p style="text-align: center; margin-top: 2rem;">
-                <strong style="color: var(--neon-orange); font-size: 1.3rem; text-shadow: 0 0 10px var(--neon-orange);">
-                    Let's find out. The show is about to begin.
-                </strong>
-            </p>
-        </div>
-
-        <div class="content" style="text-align: center;">
-            <h3>Quick Navigation</h2>
-            <p>
-                <a href="rules.html" class="btn">Read Full Rules</a>
-                <a href="rewards.html" class="btn" style="margin-left: 1rem;">Browse Reward Cards</a>
-                <a href="challenges.html" class="btn">View Challenges</a>
-                <a href="glossary.html" class="btn" style="margin-left: 1rem;">Check Glossary</a>
-            </p>
-        </div>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="section-header">
+                <h2>Ready to Enter The Gauntlet?</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="cta-grid">
+                <a href="rules.html" class="cta-card">
+                    <div class="cta-icon">📖</div>
+                    <h3>Read Full Rules</h3>
+                    <p>Learn how to play and master the game</p>
+                </a>
+                <a href="rewards.html" class="cta-card">
+                    <div class="cta-icon">💎</div>
+                    <h3>Browse Rewards</h3>
+                    <p>Discover powerful weapons and abilities</p>
+                </a>
+                <a href="challenges.html" class="cta-card">
+                    <div class="cta-icon">⚔️</div>
+                    <h3>View Challenges</h3>
+                    <p>See what dangers await in The Gauntlet</p>
+                </a>
+                <a href="glossary.html" class="cta-card">
+                    <div class="cta-icon">📚</div>
+                    <h3>Check Glossary</h3>
+                    <p>Reference terms and game mechanics</p>
+                </a>
+            </div>
+        </section>
     </div>
 
     <script src="js/nav-component.js"></script>
