@@ -4,7 +4,7 @@ class NavComponent extends HTMLElement {
             <nav>
                 <div class="nav-logo">
                     <a href="index.html">
-                        <img src="images/MAC-Logo-New.png" alt="Magic Ain't Cheap Logo">
+                        <img src="images/MAClogo.png" alt="Magic Ain't Cheap Logo">
                     </a>
                 </div>
                 <div class="hamburger">
