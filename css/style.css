@@ -66,7 +66,7 @@ nav {
     height: 50px;
     width: auto;
     margin: 0;
-    padding: 0;
+    padding-top: 10px;
 }
 
 .nav-logo-text {
@@ -147,7 +147,6 @@ nav a:hover {
 }
 
 nav a.active {
-    background: var(--gray-800);
     font-weight: 600;
 }
 
@@ -177,7 +176,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     color: var(--gray-900);
     margin: 1.5rem 0 0.75rem 0;
     font-weight: 600;
@@ -817,4 +816,94 @@ code {
 
 .dataTables_paginate .paginate_button.disabled {
     color: var(--gray-400) !important;
+}
+
+/* ===== RULES PAGE SIDEBAR ===== */
+.rules-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.rules-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px; /* Below the sticky nav */
+    align-self: flex-start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    background: var(--white);
+    padding: 1rem;
+    border: 1px solid var(--gray-300);
+}
+
+.sidebar-nav h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--black);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 0;
+}
+
+.sidebar-nav a {
+    display: block !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--gray-700) !important;
+    text-decoration: none !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border-left: 3px solid transparent !important;
+    border-bottom: none !important;
+    transition: all 0.2s ease !important;
+    position: static !important;
+}
+
+.sidebar-nav a:hover {
+    color: var(--black) !important;
+    background: var(--gray-100) !important;
+    border-left-color: var(--gray-400) !important;
+}
+
+.sidebar-nav a.active {
+    color: var(--black) !important;
+    font-weight: 600 !important;
+    background: var(--gray-100) !important;
+    border-left-color: var(--black) !important;
+}
+
+.rules-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 968px) {
+    .rules-layout {
+        flex-direction: column;
+    }
+
+    .rules-sidebar {
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-bottom: 1rem;
+    }
+
+    .sidebar-nav {
+        background: var(--gray-100);
+        padding: 1rem;
+        border: 1px solid var(--gray-300);
+    }
 }

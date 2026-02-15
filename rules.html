@@ -5,41 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rules - Magic Ain't Cheap</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .content h1 {
-            background: linear-gradient(45deg, var(--primary-purple), var(--primary-orange));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
-            margin-top: 2rem;
-        }
-        .content h2 {
-            margin-top: 2rem;
-        }
-        .content h3 {
-            margin-top: 1.5rem;
-        }
-        .content ul {
-            margin-bottom: 1.5rem;
-        }
-        .content li {
-            margin: 0.5rem 0;
-        }
-    </style>
 </head>
 <body>
     <nav-component></nav-component>
 
     <div class="container">
-        <h1>OFFICIAL RULEBOOK</h1>
-        <div class="content">
-<h1>MAGIC AIN'T CHEAP</h1>
-<h2>OFFICIAL RULEBOOK</h2>
+        <div class="rules-layout">
+            <aside class="rules-sidebar">
+                <nav class="sidebar-nav">
+                    <h3>Contents</h3>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#how-to-play">How to Play</a></li>
+                        <li><a href="#setup">Setting Up</a></li>
+                        <li><a href="#green-room">Green Room</a></li>
+                        <li><a href="#challenge">Challenge Phase</a></li>
+                        <li><a href="#rewards">Rewards Phase</a></li>
+                        <li><a href="#bosses">Bosses & Levels</a></li>
+                        <li><a href="#mechanics">Mechanics</a></li>
+                        <li><a href="#cards">Card Types</a></li>
+                    </ul>
+                </nav>
+            </aside>
 
-<p>---</p>
+            <div class="rules-content">
+                <div class="content">
+<h1>MAGIC AIN'T CHEAP - OFFICIAL RULEBOOK</h1>
 
-<h1>WELCOME TO THE GAUNTLET</h1>
+<h2 id="introduction">WELCOME TO THE GAUNTLET</h2>
 
 <p>Welcome, contestant! You've been selected to compete in <em>The Gauntlet</em>, the galaxy's most popular death sport and the ultimate test of skill, strategy, and survival. Broadcast across countless systems, this dystopian game show throws contestants into deadly challenges where magic isn't just power—it's currency. Every spell you cast, every weapon you swing, every piece of armor you wear must be purchased with hard-earned Gold. The cameras are rolling, the audience is watching, and only the strongest, smartest, and wealthiest will survive.</p>
 
@@ -55,7 +48,7 @@
 
 <p>---</p>
 
-<h1>HOW TO PLAY</h1>
+<h2 id="how-to-play">HOW TO PLAY</h2>
 
 <h2>Player Count and Cooperation</h2>
 
@@ -113,7 +106,7 @@
 
 <p>---</p>
 
-<h1>SETTING UP THE GAME</h1>
+<h2 id="setup">SETTING UP THE GAME</h2>
 
 <h2>Character Creation</h2>
 
@@ -307,13 +300,13 @@
 
 <p>---</p>
 
-<h1>THE CORE GAME LOOP</h1>
+<h2>THE CORE GAME LOOP</h2>
 
 <p>Magic Ain't Cheap follows a repeating cycle of phases. You'll move through the Green Room Phase, Challenge Phase, and Rewards Phase over and over until you complete all six Challenges and defeat the Boss.</p>
 
 <p>---</p>
 
-<h1>GREEN ROOM PHASE</h1>
+<h2 id="green-room">GREEN ROOM PHASE</h2>
 
 <h2>What is the Green Room?</h2>
 
@@ -406,7 +399,7 @@
 
 <p>---</p>
 
-<h1>CHALLENGE PHASE</h1>
+<h2 id="challenge">CHALLENGE PHASE</h2>
 
 <h2>Challenge Card Anatomy</h2>
 
@@ -902,7 +895,7 @@
 
 <p>---</p>
 
-<h1>REWARDS PHASE</h1>
+<h2 id="rewards">REWARDS PHASE</h2>
 
 <p>After completing (or failing) a Challenge, you enter the Rewards Phase. This is where you reap the benefits of success—or suffer the consequences of failure.</p>
 
@@ -1010,7 +1003,7 @@
 
 <p>---</p>
 
-<h1>LEVEL UP AND BOSS FIGHTS</h1>
+<h2 id="bosses">LEVEL UP AND BOSS FIGHTS</h2>
 
 <h2>When You Level Up</h2>
 
@@ -1126,7 +1119,7 @@
 
 <p>---</p>
 
-<h1>CORE MECHANICS REFERENCE</h1>
+<h2 id="mechanics">CORE MECHANICS REFERENCE</h2>
 
 <h2>Dice Pool System</h2>
 
@@ -1297,7 +1290,7 @@
 
 <p>---</p>
 
-<h1>CARD TYPES</h1>
+<h2 id="cards">CARD TYPES</h2>
 
 <h2>Weapons</h2>
 
@@ -1425,11 +1418,13 @@
 
 <p>---</p>
 
-
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="js/nav-component.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/rules-sidebar.js"></script>
 </body>
 </html>
