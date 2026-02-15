@@ -147,7 +147,6 @@ nav a.active {
 h1 {
     font-size: 2.5rem;
     text-align: center;
-    margin: 2rem 0;
     color: var(--black);
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -182,7 +181,7 @@ h3 {
     border: 2px solid var(--black);
     padding: 3rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 2rem;
 }
 
 .hero h1 {
@@ -261,6 +260,7 @@ tbody td {
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -411,7 +411,8 @@ tbody td {
 }
 
 /* ===== LISTS ===== */
-ul, ol {
+ul,
+ol {
     margin-left: 2rem;
     margin-bottom: 1rem;
 }
@@ -607,7 +608,8 @@ code {
         overflow-x: auto;
     }
 
-    thead th, tbody td {
+    thead th,
+    tbody td {
         padding: 0.5rem;
         font-size: 0.8rem;
     }
@@ -626,7 +628,8 @@ code {
         font-size: 1.5rem;
     }
 
-    .card-type, .card-cost {
+    .card-type,
+    .card-cost {
         font-size: 0.75rem;
         padding: 0.25rem 0.75rem;
     }
@@ -638,7 +641,8 @@ code {
         gap: 0.25rem;
     }
 
-    .card-stat-label, .card-stat-value {
+    .card-stat-label,
+    .card-stat-value {
         font-size: 0.85rem;
     }
 
@@ -668,7 +672,8 @@ code {
         font-size: 1rem;
     }
 
-    ul, ol {
+    ul,
+    ol {
         margin-left: 1.5rem;
     }
 }
@@ -732,7 +737,8 @@ code {
         font-size: 0.75rem;
     }
 
-    thead th, tbody td {
+    thead th,
+    tbody td {
         padding: 0.4rem;
     }
 
