@@ -1,0 +1,10 @@
+# Netlify configuration for Magic Ain't Cheap website
+
+[build]
+  # No build command needed - static site
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

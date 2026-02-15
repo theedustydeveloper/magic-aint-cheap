@@ -1,0 +1,56 @@
+[
+  {
+    "Name": "Burning Floor",
+    "Floor": "Floor 1",
+    "Effect": "All participants take 2 fire damage at start of each round",
+    "Affects": "Players + Monsters",
+    "Damage_Type": "Fire",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "The arena floor is covered in flames"
+  },
+  {
+    "Name": "High Winds",
+    "Floor": "Floor 1",
+    "Effect": "All ranged attacks have disadvantage (roll twice take lower result)",
+    "Affects": "Players + Monsters",
+    "Damage_Type": "N/A",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "Powerful gusts disrupt projectiles and spells"
+  },
+  {
+    "Name": "Darkness",
+    "Floor": "Floor 1",
+    "Effect": "All attacks have -2 to hit (subtract 2 from roll before checking hit/miss)",
+    "Affects": "Players + Monsters",
+    "Damage_Type": "N/A",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "Pitch black arena - visibility near zero"
+  },
+  {
+    "Name": "Poison Gas",
+    "Floor": "Floor 1",
+    "Effect": "All participants gain 1 Poison token at end of each round (2 HP/turn for 3 rounds)",
+    "Affects": "Players + Monsters",
+    "Damage_Type": "Poison",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "Toxic fumes fill the arena"
+  },
+  {
+    "Name": "Unstable Ground",
+    "Floor": "Floor 1",
+    "Effect": "On natural 1 on any die roll player falls prone (lose next action)",
+    "Affects": "Players Only",
+    "Damage_Type": "N/A",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "Crumbling floor and loose rubble"
+  },
+  {
+    "Name": "Arcane Surge",
+    "Floor": "Floor 1",
+    "Effect": "All spells deal +3 damage. All spell users take 1 HP when casting",
+    "Affects": "Players + Monsters",
+    "Damage_Type": "Arcane",
+    "Duration": "Entire Challenge",
+    "Thematic_Description": "Wild magic energy saturates the arena"
+  }
+]

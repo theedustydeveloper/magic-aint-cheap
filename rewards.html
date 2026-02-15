@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward Cards - Magic Ain't Cheap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img src="images/MAC%20Logo%20white.svg" alt="Magic Ain't Cheap Logo">
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="rewards.html">Reward Cards</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="treasure.html">Treasure</a></li>
+            <li><a href="floor-generator.html">Floor Generator</a></li>
+            <li><a href="game-maps.html">Game Maps</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>REWARD CARDS</h1>
+        <div class="content">
+            <p>Browse all available Reward cards. Click any row to view detailed card information.</p>
+            
+            <table id="rewardsTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Cost</th>
+                        <th>Stat</th>
+                        <th>Rating</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let rewardsData = [];
+
+        // Load reward cards data
+        fetch('data/rewards.json')
+            .then(response => response.json())
+            .then(data => {
+                rewardsData = data;
+                
+                // Initialize DataTable
+                const table = $('#rewardsTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'ID' },
+                        { data: 'Card Name' },
+                        { data: 'Type' },
+                        { 
+                            data: 'Gold',
+                            render: function(data) {
+                                return data + 'G';
+                            }
+                        },
+                        { data: 'Stat' },
+                        { data: 'Rating' },
+                        { 
+                            data: null,
+                            render: function(data, type, row) {
+                                let details = [];
+                                
+                                // For Enhancements, include stat bonus in description
+                                if (row.Type === 'Enhancement' && row['Stat Bonus'] && row['Stat Bonus'] !== '0') {
+                                    details.push(row.Stat + ' +' + row['Stat Bonus']);
+                                }
+                                
+                                if (row['Card Bonus'] && row['Card Bonus'] !== '-') {
+                                    details.push(row['Card Bonus'].trim());
+                                }
+                                if (row.Tags && row.Tags !== '-' && row.Tags !== 'Passive') {
+                                    details.push(row.Tags);
+                                }
+                                return details.join(' | ') || 'See card';
+                            }
+                        }
+                    ],
+                    pageLength: 25,
+                    order: [[0, 'asc']],
+                    language: {
+                        search: "Search cards:",
+                        lengthMenu: "Show _MENU_ cards",
+                        info: "Showing _START_ to _END_ of _TOTAL_ cards",
+                        infoEmpty: "No cards available",
+                        infoFiltered: "(filtered from _MAX_ total cards)"
+                    }
+                });
+
+                // Add click event to rows
+                $('#rewardsTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'reward');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading reward cards:', error));
+    </script>
+</body>
+</html>

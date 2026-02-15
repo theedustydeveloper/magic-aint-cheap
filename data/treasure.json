@@ -1,0 +1,102 @@
+[
+  {
+    "Card_Name": "Coin Purse",
+    "Floor": "Floor 1",
+    "Difficulty": "Easy",
+    "Test_Count": "2",
+    "Test_Composition": "1 High / 1 Low",
+    "Reward_Type": "Gold",
+    "Reward_Details": "Gain 25 Gold",
+    "Thematic_Description": "Simple lockbox with coins"
+  },
+  {
+    "Card_Name": "Healing Salve",
+    "Floor": "Floor 1",
+    "Difficulty": "Easy",
+    "Test_Count": "2",
+    "Test_Composition": "2 High",
+    "Reward_Type": "Healing",
+    "Reward_Details": "Heal 20 HP",
+    "Thematic_Description": "Medical supplies"
+  },
+  {
+    "Card_Name": "Hidden Stash",
+    "Floor": "Floor 1",
+    "Difficulty": "Easy",
+    "Test_Count": "2",
+    "Test_Composition": "2 Low",
+    "Reward_Type": "Extra Draws",
+    "Reward_Details": "Draw +1 extra Reward card next draft",
+    "Thematic_Description": "Secret compartment with gear"
+  },
+  {
+    "Card_Name": "Spiked Grenade",
+    "Floor": "Floor 1",
+    "Difficulty": "Easy",
+    "Test_Count": "2",
+    "Test_Composition": "1 High / 1 Low",
+    "Reward_Type": "Monster Damage",
+    "Reward_Details": "Deal 8 damage to all monsters (ignores Block)",
+    "Thematic_Description": "Explosive device"
+  },
+  {
+    "Card_Name": "Merchant's Vault",
+    "Floor": "Floor 1",
+    "Difficulty": "Medium",
+    "Test_Count": "3",
+    "Test_Composition": "2 High / 1 Low",
+    "Reward_Type": "Gold",
+    "Reward_Details": "Gain 40 Gold",
+    "Thematic_Description": "Trader's lockbox"
+  },
+  {
+    "Card_Name": "Arcane Regenerator",
+    "Floor": "Floor 1",
+    "Difficulty": "Medium",
+    "Test_Count": "3",
+    "Test_Composition": "1 High / 2 Low",
+    "Reward_Type": "Healing",
+    "Reward_Details": "Heal 30 HP",
+    "Thematic_Description": "Magic healing device"
+  },
+  {
+    "Card_Name": "Sponsor Package",
+    "Floor": "Floor 1",
+    "Difficulty": "Medium",
+    "Test_Count": "3",
+    "Test_Composition": "3 High",
+    "Reward_Type": "Extra Draws",
+    "Reward_Details": "Draw +2 extra Reward cards next draft",
+    "Thematic_Description": "Production team supply drop"
+  },
+  {
+    "Card_Name": "Ancient Bomb",
+    "Floor": "Floor 1",
+    "Difficulty": "Medium",
+    "Test_Count": "3",
+    "Test_Composition": "2 High / 1 Low",
+    "Reward_Type": "Combo",
+    "Reward_Details": "Deal 12 damage to all monsters (ignores Block) + Heal 10 HP",
+    "Thematic_Description": "Magical explosive with healing mist"
+  },
+  {
+    "Card_Name": "Legendary Cache",
+    "Floor": "Floor 1",
+    "Difficulty": "Hard",
+    "Test_Count": "4",
+    "Test_Composition": "2 High / 2 Low",
+    "Reward_Type": "Combo",
+    "Reward_Details": "Gain 60 Gold + Heal 20 HP",
+    "Thematic_Description": "Ancient hero's treasure"
+  },
+  {
+    "Card_Name": "Champion's Boon",
+    "Floor": "Floor 1",
+    "Difficulty": "Hard",
+    "Test_Count": "4",
+    "Test_Composition": "3 High / 1 Low",
+    "Reward_Type": "Combo",
+    "Reward_Details": "Auto-pass next 2 Skill Tests in this Challenge + Draw +1 extra Reward card next draft",
+    "Thematic_Description": "Blessing from arena champions"
+  }
+]

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Generator - Magic Ain't Cheap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .generator-section {
+            margin: 2rem 0;
+        }
+
+        .challenge-list {
+            margin: 1rem 0;
+        }
+
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: rgba(139, 75, 227, 0.1);
+            border-left: 4px solid var(--neon-purple);
+            border-radius: 4px;
+        }
+
+        .challenge-name {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-name.hidden {
+            background: var(--grease-black);
+            color: var(--grease-black);
+            user-select: none;
+        }
+
+        .challenge-name.revealed {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--text-light);
+        }
+
+        .challenge-name.revealed:hover {
+            background: rgba(255, 107, 53, 0.3);
+            border: 1px solid var(--neon-orange);
+        }
+
+        .eye-icon {
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .eye-icon:hover {
+            transform: scale(1.2);
+            color: var(--neon-orange);
+        }
+
+        .eye-icon.revealed {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .generate-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-orange));
+            color: var(--text-light);
+            text-decoration: none;
+            border: 2px solid var(--neon-purple);
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 75, 227, 0.4);
+            font-size: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 75, 227, 0.6), 0 0 20px var(--neon-orange);
+            border-color: var(--neon-orange);
+        }
+
+        .floor-title {
+            color: var(--neon-orange);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-left: 4px solid var(--primary-orange);
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img src="images/MAC%20Logo%20white.svg" alt="Magic Ain't Cheap Logo">
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="rewards.html">Reward Cards</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="treasure.html">Treasure</a></li>
+            <li><a href="floor-generator.html">Floor Generator</a></li>
+            <li><a href="game-maps.html">Game Maps</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>FLOOR 1 GENERATOR</h1>
+        <div class="content">
+            <p>Generate a random Floor 1 challenge layout for your playthrough. Click the eye icon to reveal each challenge name, then click the name to view details.</p>
+            
+            <div style="text-align: center;">
+                <button class="generate-btn" id="generateBtn">Generate Floor 1</button>
+            </div>
+
+            <div id="floorContent" style="display: none;">
+                <div class="generator-section">
+                    <h2 class="floor-title">Level 1 Challenges</h2>
+                    <div class="challenge-list" id="level1List"></div>
+                </div>
+
+                <div class="generator-section">
+                    <h2 class="floor-title">Level 2 Challenges</h2>
+                    <div class="challenge-list" id="level2List"></div>
+                </div>
+
+                <div class="generator-section">
+                    <h2 class="floor-title">Boss Challenge</h2>
+                    <div class="challenge-list" id="bossList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        let challengesData = [];
+
+        // Load challenges data
+        fetch('data/challenges.json')
+            .then(response => response.json())
+            .then(data => {
+                challengesData = data;
+            })
+            .catch(error => console.error('Error loading challenges:', error));
+
+        // Generate random floor
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            if (challengesData.length === 0) {
+                alert('Challenges data is still loading. Please try again.');
+                return;
+            }
+
+            // Filter challenges
+            const level1Challenges = challengesData.filter(c => c.ID.startsWith('L1-'));
+            const level2Challenges = challengesData.filter(c => c.ID.startsWith('L2-'));
+            const bossChallenges = challengesData.filter(c => c.ID.startsWith('BOSS-F1-'));
+
+            // Get random selections
+            const selectedLevel1 = getRandomItems(level1Challenges, 3);
+            const selectedLevel2 = getRandomItems(level2Challenges, 3);
+            const selectedBoss = getRandomItems(bossChallenges, 1);
+
+            // Display challenges
+            displayChallenges('level1List', selectedLevel1);
+            displayChallenges('level2List', selectedLevel2);
+            displayChallenges('bossList', selectedBoss);
+
+            // Show the content
+            document.getElementById('floorContent').style.display = 'block';
+        });
+
+        // Get random items from array
+        function getRandomItems(array, count) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // Display challenges in list
+        function displayChallenges(listId, challenges) {
+            const list = document.getElementById(listId);
+            list.innerHTML = '';
+
+            challenges.forEach((challenge, index) => {
+                const item = document.createElement('div');
+                item.className = 'challenge-item';
+                
+                const eyeIcon = document.createElement('span');
+                eyeIcon.className = 'eye-icon';
+                eyeIcon.innerHTML = '👁️';
+                eyeIcon.onclick = function() {
+                    nameDiv.classList.remove('hidden');
+                    nameDiv.classList.add('revealed');
+                    eyeIcon.classList.add('revealed');
+                };
+
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'challenge-name hidden';
+                nameDiv.textContent = challenge.Thematic_Name;
+                nameDiv.onclick = function() {
+                    if (nameDiv.classList.contains('revealed')) {
+                        openModal(challenge, 'challenge');
+                    }
+                };
+
+                item.appendChild(eyeIcon);
+                item.appendChild(nameDiv);
+                list.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>

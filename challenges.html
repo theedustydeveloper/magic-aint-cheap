@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges - Magic Ain't Cheap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img src="images/MAC%20Logo%20white.svg" alt="Magic Ain't Cheap Logo">
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="rewards.html">Reward Cards</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="treasure.html">Treasure</a></li>
+            <li><a href="floor-generator.html">Floor Generator</a></li>
+            <li><a href="game-maps.html">Game Maps</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>CHALLENGES & ENCOUNTERS</h1>
+        
+        <!-- Challenges -->
+        <div class="content">
+            <h2>Challenge Cards</h2>
+            <p>All Challenges from The Gauntlet including Combat, Skill, Hybrid encounters, and Boss fights. Click any row to view details.</p>
+            
+            <table id="challengesTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Difficulty</th>
+                        <th>Monsters</th>
+                        <th>Win Condition</th>
+                        <th>Success Reward</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Monsters -->
+        <div class="content">
+            <h2>Monster Cards</h2>
+            <p>Enemy creatures you'll face in The Gauntlet. Click any row to view full stats and abilities.</p>
+            
+            <table id="monstersTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Tier</th>
+                        <th>HP</th>
+                        <th>Initiative</th>
+                        <th>Weapon</th>
+                        <th>Abilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Environments -->
+        <div class="content">
+            <h2>Environment Cards</h2>
+            <p>Arena conditions that affect all participants. Click any row to view details.</p>
+            
+            <table id="environmentsTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Floor</th>
+                        <th>Effect</th>
+                        <th>Affects</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Load Challenges
+        fetch('data/challenges.json')
+            .then(response => response.json())
+            .then(data => {
+                const table = $('#challengesTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'Thematic_Name' },
+                        { data: 'Type' },
+                        { data: 'Difficulty' },
+                        { 
+                            data: 'Monsters',
+                            render: function(data, type, row) {
+                                if (data === 'None' || !data) return 'None';
+                                return `${data} (${row['Monster_Count_1-2P']}/${row['Monster_Count_3-4P']})`;
+                            }
+                        },
+                        { data: 'Win_Condition' },
+                        { 
+                            data: 'Success_Gold',
+                            render: function(data, type, row) {
+                                let reward = data;
+                                if (row.Success_Bonus !== 'None') {
+                                    reward += ` + ${row.Success_Bonus}`;
+                                }
+                                return reward;
+                            }
+                        }
+                    ],
+                    pageLength: 15,
+                    order: [[0, 'asc']]
+                });
+
+                $('#challengesTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'challenge');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading challenges:', error));
+
+        // Load Monsters
+        fetch('data/monsters.json')
+            .then(response => response.json())
+            .then(data => {
+                const table = $('#monstersTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'Name' },
+                        { data: 'Type' },
+                        { data: 'Tier' },
+                        { data: 'HP' },
+                        { data: 'Initiative' },
+                        { data: 'Weapon/Attack' },
+                        { 
+                            data: 'Abilities',
+                            render: function(data) {
+                                return data || 'None';
+                            }
+                        }
+                    ],
+                    pageLength: 15,
+                    order: [[0, 'asc']]
+                });
+
+                $('#monstersTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'monster');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading monsters:', error));
+
+        // Load Environments
+        fetch('data/environments.json')
+            .then(response => response.json())
+            .then(data => {
+                const table = $('#environmentsTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'Name' },
+                        { data: 'Floor' },
+                        { data: 'Effect' },
+                        { data: 'Affects' },
+                        { data: 'Duration' }
+                    ],
+                    pageLength: 10,
+                    order: [[0, 'asc']]
+                });
+
+                $('#environmentsTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'environment');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading environments:', error));
+    </script>
+</body>
+</html>

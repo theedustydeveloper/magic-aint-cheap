@@ -1,0 +1,214 @@
+# GLOSSARY
+
+## A
+
+**Ability:** A card type that provides special effects, passive or active.
+
+**Accessory Slot:** Equipment slot for rings, amulets, trinkets (1 per player).
+
+**AOE (Area of Effect):** Attacks or effects that hit multiple targets.
+
+**Arms Slot:** Equipment slot for arm guards, bracers, sleeves (1 per player).
+
+**Armor:** Cards that provide Block, equipped in specific body slots.
+
+**Attack:** An action where you roll a die to deal damage to a target.
+
+## B
+
+**Base Damage:** The damage listed on a weapon/spell card before modifiers.
+
+**Berserker:** Keyword ability - when deals damage, immediately attack another random target.
+
+**Block:** Armor value that reduces incoming damage (cannot reduce below 1).
+
+**Body Slot:** Equipment slot for chest armor, robes, jackets (1 per player).
+
+**Boss:** A special super-powered monster at the end of each Floor.
+
+## C
+
+**Challenge:** An encounter the party must complete (Combat, Skill, or Hybrid).
+
+**Charm (Ch):** A stat used for social abilities and Clone Token scaling.
+
+**Clone Token:** A Charm-based summoned ally.
+
+**Critical Hit:** Rolling natural max on die = double damage.
+
+**Co-op:** Cooperative - players work together to win.
+
+## D
+
+**Damage:** Reduction of HP caused by attacks.
+
+**Death:** Reaching 0 HP - player is knocked out, respawns after Challenge.
+
+**Dice Affinity:** Recommended die to use with a card (listed on card).
+
+**Dice Pool:** The collection of dice a player owns (max 6).
+
+**Difficulty Mode:** Easy/Medium/Hard - chosen at game start, affects draft count and trading.
+
+**Discard Pile:** Where used/discarded cards go (communal, can buy from here).
+
+**Dual Wield:** Equipping two weapons (one in each Hand slot).
+
+## E
+
+**Easy Mode:** Reward Draft difficulty - draw 6 cards, free trading.
+
+**Enhancements:** Card type that permanently modifies stats (90 in Floor 1). Never go in inventory - attach to character forever.
+
+**Environment:** A card that affects all participants in a Challenge.
+
+**Equipment Slot:** Body location where gear is equipped (Head/Body/Arms/Legs/Hands/Accessory).
+
+**Evasive:** Keyword ability - gain +1 Block per Miss (resets each Round).
+
+**Exhaust:** Rotating a card sideways - cannot use again this Round.
+
+**Exhausted Dice Pool:** Area of player board where used dice go. Dice reset at end of turn/round.
+
+## F
+
+**Failure:** Not completing a Challenge's Win Condition (or time limit reached).
+
+**Favors:** Card type with one-time powerful effects from production/audience (18 in Floor 1). Can be used in Green Room or Challenge. Stay in inventory until used.
+
+**Floor:** A set of 6 Challenges + 1 Boss (game has 3 Floors).
+
+**Free Action:** Action that doesn't cost resources (communicate, check stats, etc.).
+
+## G
+
+**Gold (G):** Currency used to buy cards.
+
+**Green Room:** Safe zone between Challenges where players rest, shop, and prepare.
+
+**Guardian Token:** A Willpower-based summoned ally.
+
+## H
+
+**Hands Slots:** Equipment slots for weapons, shields, gloves (2 per player).
+
+**Hard Mode:** Reward Draft difficulty - draw 4 cards, no trading.
+
+**Head Slot:** Equipment slot for helmets, hats, hoods (1 per player).
+
+**High Test:** Skill Test where you ADD stat to roll (trying to roll high).
+
+**HP (Hit Points):** Health - when reduced to 0, player/monster dies.
+
+**Hybrid Challenge:** A Challenge with both combat and skill test elements.
+
+## I
+
+**Initiative:** Turn order value (roll die + Speed stat for players).
+
+**Intelligence (INT):** A stat used for spells and INT Tests.
+
+**Inventory:** Owned cards that are not currently equipped.
+
+**Item:** A card type that provides passive effects.
+
+## K
+
+**Keyword Ability:** A special monster ability (Berserker, Pack Hunter, Evasive, etc.).
+
+**Kits:** Card type - large equipment usable only in Green Room (15 in Floor 1). Requires die sacrifice (move to exhaust without rolling). Provides buff until end of next Challenge.
+
+## L
+
+**Legs Slot:** Equipment slot for leg armor, pants, greaves (1 per player).
+
+**Level:** Player power tier (1-6), determines available dice count.
+
+**Level Up:** Gaining +1 die after completing 3 Challenges or defeating a Boss.
+
+**Low Test:** Skill Test where you SUBTRACT stat from roll (trying to roll low).
+
+**Luck (L):** A stat used for Luck Tests and some abilities.
+
+## M
+
+**Main Action:** An action that requires a resource (die, HP, Gold, etc.).
+
+**Medium Mode:** Reward Draft difficulty - draw 5 cards, 5G to trade.
+
+**Might (M):** A stat used for weapon attacks.
+
+**Miss:** Rolling natural 1 on die = attack fails (no damage).
+
+**Monster:** An enemy creature controlled by the game.
+
+## P
+
+**Pack Hunter:** Keyword ability - +2 damage per allied monster.
+
+**Phase:** A section of Boss behavior based on HP thresholds.
+
+**Poison:** Keyword ability - on hit, target takes 2 HP/turn for 3 rounds.
+
+## R
+
+**Reaction:** An ability that triggers in response to specific events.
+
+**Recall:** Voluntarily exiting a Challenge (counts as Failure).
+
+**Regeneration:** Keyword ability - heal X HP at start of turn.
+
+**Resting Roll:** Rolling one of your dice to heal HP in Green Room (FREE, no cost).
+
+**Reward Deck:** The 600-card deck containing all purchasable cards.
+
+**Reward Draft:** Drafting cards after a Challenge (Easy/Medium/Hard modes).
+
+**Round:** A full cycle where every participant takes 1 turn.
+
+## S
+
+**Skeleton Token:** An INT-based summoned ally.
+
+**Skill Challenge:** A Challenge requiring Stat Tests (non-combat).
+
+**Skill Test:** Rolling a die + modding with a stat to achieve High or Low result.
+
+**Speed (S):** A stat used for Initiative, Speed Tests, and some weapons.
+
+**Spell:** A magic-based attack card that scales with INT.
+
+**Stat:** One of 6 attributes (Might, Speed, INT, Willpower, Charm, Luck).
+
+**Stat Tag:** A special property on cards that causes Exhaustion when used.
+
+**Success:** Completing a Challenge's Win Condition.
+
+## T
+
+**Time Limit:** Maximum number of Rounds before a Challenge auto-fails.
+
+**Token:** A summoned ally creature (Skeleton, Clone, or Guardian).
+
+**Treasure:** Bonus loot randomly available in some Challenges.
+
+**Treasure Guardian:** Keyword ability - auto-succeed Treasure Roll on defeat.
+
+**Treasure Roll:** Rolling at Challenge start to determine if Treasure appears.
+
+**Turn:** One participant's opportunity to take actions.
+
+## U
+
+**Unactivated Dice Pool:** Area of player board where available/unused dice are kept. Dice move to Exhausted Pool when used.
+
+## W
+
+**Weapon:** A physical attack card that scales with Might or Speed.
+
+**Willpower (WP):** A stat used for resisting effects and Guardian Token scaling.
+
+**Win Condition:** What must be achieved to succeed at a Challenge.
+
+---
+

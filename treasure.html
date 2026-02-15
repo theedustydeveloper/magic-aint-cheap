@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure - Magic Ain't Cheap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img src="images/MAC%20Logo%20white.svg" alt="Magic Ain't Cheap Logo">
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="rewards.html">Reward Cards</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="treasure.html">Treasure</a></li>
+            <li><a href="floor-generator.html">Floor Generator</a></li>
+            <li><a href="game-maps.html">Game Maps</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>TREASURE DECK</h1>
+        <div class="content">
+            <p>Bonus loot that randomly appears in Challenges. Treasure cards require Skill Tests to unlock their rewards. Click any row to view details.</p>
+            
+            <table id="treasureTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Floor</th>
+                        <th>Difficulty</th>
+                        <th>Tests</th>
+                        <th>Reward Type</th>
+                        <th>Reward</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Load Treasure cards
+        fetch('data/treasure.json')
+            .then(response => response.json())
+            .then(data => {
+                const table = $('#treasureTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'Card_Name' },
+                        { data: 'Floor' },
+                        { data: 'Difficulty' },
+                        { 
+                            data: 'Test_Count',
+                            render: function(data, type, row) {
+                                return `${data} (${row.Test_Composition})`;
+                            }
+                        },
+                        { data: 'Reward_Type' },
+                        { data: 'Reward_Details' }
+                    ],
+                    pageLength: 15,
+                    order: [[0, 'asc']],
+                    language: {
+                        search: "Search treasure:",
+                        lengthMenu: "Show _MENU_ items",
+                        info: "Showing _START_ to _END_ of _TOTAL_ treasure cards",
+                        infoEmpty: "No treasure cards available",
+                        infoFiltered: "(filtered from _MAX_ total cards)"
+                    }
+                });
+
+                // Add click event to rows
+                $('#treasureTable tbody').on('click', 'tr', function() {
+                    const rowData = table.row(this).data();
+                    if (rowData) {
+                        openModal(rowData, 'treasure');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading treasure cards:', error));
+    </script>
+</body>
+</html>
