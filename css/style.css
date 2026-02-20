@@ -414,7 +414,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: var(--gray-100);
+    background: whitesmoke;
 }
 
 tbody td {
@@ -1805,6 +1805,26 @@ section {
     margin: 0;
     font-size: 0.95rem;
 }
+
+
+
+
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 36px;
+    border: 2px solid black;
+    box-shadow: var(--shadow-lg);
+}
+
+.image-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+}
+
 
 /* Responsive Homepage */
 @media (max-width: 968px) {

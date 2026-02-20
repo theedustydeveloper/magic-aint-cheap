@@ -2,38 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Ain't Cheap | Master Game Manual</title>
-    <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
             --brand-pink: #ff2e8c;
-            --brand-blue: #1faae0;
+            --brand-blue: #00d4ff;
             --brand-tan: #fdf5e6;
-            --dark-bg: #1e2024;
+            --dark-bg: #0b0e14;
             --panel-bg: #161b22;
         }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 0; }
-        .container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; margin-top: 3rem; }
-
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--brand-tan); background: var(--dark-bg); margin: 0; padding: 0; }
+        .container { max-width: 1440px; margin: auto; padding: 50px; background: var(--panel-bg); border-left: 8px solid var(--brand-pink); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        
+        header { text-align: center; border-bottom: 3px solid var(--brand-blue); padding-bottom: 20px; margin-bottom: 40px; }
+        .logo-placeholder { font-size: 3.5em; font-weight: bold; color: var(--brand-pink); text-transform: uppercase; letter-spacing: 5px; text-shadow: 2px 2px var(--brand-blue); }
+        
         h1, h2, h3 { text-transform: uppercase; letter-spacing: 2px; }
-        h2 { color: var(--brand-blue); border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 50px; }
+        h1 { color: var(--brand-pink); margin: 0; }
+        h2 { color: var(--brand-blue); border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 50px; }
         h3 { color: var(--brand-pink); margin-top: 30px; }
 
         .setup-step { position: relative; padding-left: 55px; margin-bottom: 25px; }
-        .setup-step::before {
-            content: attr(data-step); position: absolute; left: 0; top: 0; width: 35px; height: 35px;
-            background: var(--brand-pink); color: white; text-align: center; line-height: 35px; font-weight: bold; border-radius: 4px;
+        .setup-step::before { 
+            content: attr(data-step); position: absolute; left: 0; top: 0; width: 35px; height: 35px; 
+            background: var(--brand-pink); color: white; text-align: center; line-height: 35px; font-weight: bold; border-radius: 4px; 
         }
 
         .highlight-box { background: rgba(0, 212, 255, 0.05); border: 1px solid var(--brand-blue); padding: 25px; margin: 25px 0; }
         .danger-box { background: rgba(255, 46, 140, 0.05); border: 1px solid var(--brand-pink); padding: 25px; margin: 25px 0; }
-
+        
         table { width: 100%; border-collapse: collapse; margin: 25px 0; border: 1px solid var(--brand-blue); }
         th { background: var(--brand-blue); color: var(--dark-bg); padding: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid #9c9c9c; }
+        td { padding: 12px; border-bottom: 1px solid #333; }
 
-        .formula { text-align: center; font-size: 1.3em; padding: 20px; border: 2px dashed var(--brand-blue); margin: 20px 0; }
+        .formula { text-align: center; font-size: 1.3em; padding: 20px; border: 2px dashed var(--brand-blue); margin: 20px 0; color: var(--brand-tan); }
         .accent-blue { color: var(--brand-blue); font-weight: bold; }
         .accent-pink { color: var(--brand-pink); font-weight: bold; }
 
@@ -44,115 +46,24 @@
         .floor-card ul li { margin-bottom: 6px; }
         .floor-win { border-color: var(--brand-pink); background: rgba(255, 46, 140, 0.05); }
         .floor-win h3 { color: var(--brand-pink); }
-
-        /* Sidebar overrides for dark theme — use higher specificity to beat !important rules in style.css */
-        .rules-sidebar {
-            background: #2d4d5c !important;
-            border: 1px solid #333 !important;
-            color: #fdf5e6 !important;
-        }
-        .rules-sidebar .sidebar-nav h3 {
-            color: #00d4ff !important;
-            border-bottom-color: #333 !important;
-            font-size: 0.8em !important;
-            letter-spacing: 2px !important;
-            margin-top: 0 !important;
-        }
-        .rules-sidebar .sidebar-nav li {
-            color: #fdf5e6 !important;
-            margin: 0 !important;
-        }
-        .rules-sidebar .sidebar-nav a {
-            color: #fdf5e6 !important;
-            font-size: 0.85rem !important;
-            text-decoration: none !important;
-        }
-        .rules-sidebar .sidebar-nav a:hover {
-            background: rgba(0, 212, 255, 0.1) !important;
-            border-left-color: #00d4ff !important;
-            color: #00d4ff !important;
-        }
-        /* Image lightbox */
-        .lightbox-img { cursor: zoom-in; transition: opacity 0.2s ease; }
-        .lightbox-img:hover { opacity: 0.85; }
-        #lightbox {
-            display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
-        }
-        #lightbox.open { display: flex; }
-        #lightbox img {
-            max-width: 92vw; max-height: 90vh; object-fit: contain;
-            box-shadow: 0 0 60px rgba(0,0,0,0.8);
-        }
-        #lightbox-close {
-            position: fixed; top: 1.25rem; right: 1.5rem; font-size: 2.5rem; line-height: 1;
-            color: #fff; cursor: pointer; user-select: none; opacity: 0.8; transition: opacity 0.2s;
-        }
-        #lightbox-close:hover { opacity: 1; }
-
-        .rules-sidebar .sidebar-nav a.active {
-            background: rgba(255, 46, 140, 0.15) !important;
-            border-left-color: #ff2e8c !important;
-            color: #ff2e8c !important;
-            font-weight: 600 !important;
-        }
     </style>
 </head>
 <body>
-    <nav-component></nav-component>
-
-    <!-- Page Banner -->
-    <div class="page-banner">
-        <div class="page-banner-bg"></div>
-        <div class="page-banner-overlay"></div>
-
-        <div class="banner-accent banner-accent-1"></div>
-        <div class="banner-accent banner-accent-2"></div>
-        <div class="banner-accent banner-accent-3"></div>
-        <div class="banner-accent banner-accent-4"></div>
-
-        <div class="page-banner-content">
-            <h1 class="page-banner-title">Master Game Manual</h1>
-            <p class="page-banner-description">"Success is a choice — failure is a broadcast." Everything you need to survive The Gauntlet.</p>
-        </div>
-    </div>
 
 <div class="container">
-    <div class="content">
-    <div class="rules-layout">
+    <header>
+        <div class="logo-placeholder">MAGIC AIN'T CHEAP</div>
+        <p><em>"Success is a choice—failure is a broadcast."</em></p>
+    </header>
 
-        <aside class="rules-sidebar">
-            <div class="sidebar-nav">
-                <h3>Sections</h3>
-                <ul>
-                    <li><a href="#setup">1. Game Setup</a></li>
-                    <li><a href="#leveling">2. Leveling & HP</a></li>
-                    <li><a href="#stats">3. Stats</a></li>
-                    <li><a href="#card-types">4. Card Types</a></li>
-                    <li><a href="#skill-tests">5. Skill Tests</a></li>
-                    <li><a href="#combat">6. Combat</a></li>
-                    <li><a href="#dice-pool">7. Dice Pool</a></li>
-                    <li><a href="#challenge-phase">8. Challenge Phase</a></li>
-                    <li><a href="#green-room">9. Green Room</a></li>
-                    <li><a href="#treasure">10. Treasure Rolls</a></li>
-                    <li><a href="#tokens">11. Tokens & Minions</a></li>
-                    <li><a href="#floor-progression">12. Floor Progression</a></li>
-                    <li><a href="#player-area">13. Player Area</a></li>
-                    <li><a href="#game-board">14. Game Board</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <div class="rules-content">
-
-    <h2 id="setup">1. Game Setup & Initial Draft</h2>
+    <h2>1. Game Setup & Initial Draft</h2>
     <div class="setup-list">
         <div class="setup-step" data-step="1"><strong>Difficulty:</strong> Vote on Easy, Medium, or Hard. Starting HP is 30. Gold is 0. Choose one starting die (D4 to D20).</div>
         <div class="setup-step" data-step="2"><strong>Initial Draft:</strong> Draw cards based on difficulty: <span class="accent-pink">Easy: 7</span> | <span class="accent-pink">Medium: 6</span> | <span class="accent-pink">Hard: 5</span>.</div>
         <div class="setup-step" data-step="3"><strong>The Zero-Gold Rule:</strong> Because you start with 0 Gold, you may select any <span class="accent-blue">3 cards</span> for free to start your build. All unpicked cards enter the Market.</div>
     </div>
 
-    <h2 id="leveling">2. Leveling & HP Calibration</h2>
+    <h2>2. Leveling & HP Calibration</h2>
     <p>When you level up, you gain a new die. Your <strong>Max HP</strong> increases based on the balancing protocol:</p>
     <div class="highlight-box">
         <ul>
@@ -162,7 +73,7 @@
         </ul>
     </div>
 
-    <h2 id="stats">3. Stats</h2>
+    <h2>3. Stats</h2>
     <p>Each stat influences specific card types, skill tests, and damage calculations. Stats improve through leveling and card effects.</p>
     <table>
         <tr>
@@ -206,7 +117,7 @@
     </div>
     <p><em>See the Keyword Ability Glossary for full Stat Tag and Dice Affinity rules.</em></p>
 
-    <h2 id="card-types">4. Card Types & Limits</h2>
+    <h2>4. Card Types & Limits</h2>
     <p>Cards fall into distinct types, each with its own equip slot rules and limits. You can only benefit from a card if you meet its requirements and have an open slot.</p>
 
     <table>
@@ -271,7 +182,7 @@
         <p>Higher Might builds naturally carry more options into a Challenge. Cards beyond your Hand Size must be discarded or sold.</p>
     </div>
 
-    <h2 id="skill-tests">5. The Skill Test Steps</h2>
+    <h2>5. The Skill Test Steps</h2>
     <div class="highlight-box">
         <p>Use the Nudge Protocol for any Skill Test (Shout Outs, Treasure, etc.):</p>
         <ol>
@@ -282,7 +193,7 @@
         </ol>
     </div>
 
-    <h2 id="combat">6. Combat & Action Economy</h2>
+    <h2>6. Combat & Action Economy</h2>
     <div class="formula">
         [Base Damage] + <span class="accent-blue">[Stat Bonus]</span> + [Mods] - <span class="accent-pink">[Target Block]</span> = <span class="accent-blue">HP Lost</span>
     </div>
@@ -292,7 +203,7 @@
         <li><strong>Gold Rewards:</strong> Earn <span class="accent-blue">1 Gold per 1 Damage dealt</span> (after Block). Earn <span class="accent-blue">1 Gold per 2 Damage received</span> (Round down).</li>
     </ul>
 
-    <h2 id="dice-pool">7. Dice Pool Management</h2>
+    <h2>7. Dice Pool Management</h2>
     <p>Each player manages two personal die pools throughout a Challenge.</p>
     <table>
         <tr>
@@ -321,7 +232,7 @@
         <p>This Refresh cost is intentional — pushing past your limits has a price. Managing when to Refresh versus when to Recall is a key strategic decision.</p>
     </div>
 
-    <h2 id="challenge-phase">8. The Challenge Phase</h2>
+    <h2>8. The Challenge Phase</h2>
     <p>Challenges end under the following conditions:</p>
     <ul>
         <li><strong>Completion (Success):</strong> The Monster/Objective is defeated or all secondary requirements are met within the time limit.</li>
@@ -329,7 +240,7 @@
         <li><strong>Recall:</strong> Any player may <strong>Recall</strong> as a free action on their turn. Recalling removes that player from the active arena — they return to the <span class="accent-blue">Green Room</span> with their current HP and dice intact, preserving their resources but abandoning their teammates for the remainder of the Challenge. A Recalled player earns no Gold or rewards from that Challenge's outcome.</li>
     </ul>
 
-    <h2 id="green-room">9. The Green Room & Resting Roll</h2>
+    <h2>9. The Green Room & Resting Roll</h2>
     <p>The <strong>Green Room</strong> is your safe zone between Challenges. No monsters, no time pressure — players freely equip cards, discuss strategy, and spend Gold here. The party decides when to leave.</p>
 
     <h3>Green Room Phase Order</h3>
@@ -385,7 +296,7 @@
         </tr>
     </table>
 
-    <h2 id="treasure">10. Treasure Roll Rules</h2>
+    <h2>10. Treasure Roll Rules</h2>
     <p>Treasure cards represent face-down high-value corporate loot.</p>
     <ul>
         <li><strong>Attempting the Claim:</strong> Spend an Active Die and declare a stat to use for the test: <span class="accent-blue">Speed</span>, <span class="accent-blue">Intelligence</span>, or <span class="accent-blue">Luck</span>.</li>
@@ -394,7 +305,7 @@
         <li><strong>Failure:</strong> The die is exhausted, but the Treasure remains <strong>face-up</strong> in the arena, allowing for future attempts.</li>
     </ul>
 
-    <h2 id="tokens">11. Token & Minion Protocol</h2>
+    <h2>11. Token & Minion Protocol</h2>
     <p>Tokens are summoned assets that follow the <span class="accent-pink">Life-Link</span> system.</p>
     <ul>
         <li><strong>Deployment:</strong> Summon a Token by paying its listed Gold cost and spending <span class="accent-pink">1 Active Die</span>.</li>
@@ -402,7 +313,7 @@
         <li><strong>Healing:</strong> Players may sacrifice their own HP to heal a Token at a <strong>1-for-1 ratio</strong> as a free action.</li>
     </ul>
 
-    <h2 id="floor-progression">12. Floor Progression & Win Condition</h2>
+    <h2>12. Floor Progression & Win Condition</h2>
     <p>The game is structured across <strong>3 Floors</strong>, each containing 6 Challenges followed by a Floor Boss. Completing a Challenge grants a Reward Phase. Defeating the Final Boss on Floor 3 wins the game.</p>
 
     <div class="floor-grid">
@@ -435,10 +346,9 @@
         </div>
     </div>
 
-    <h2 id="player-area">13. Board Layout — Player Area</h2>
+    <h2>13. Board Layout — Player Area</h2>
     <p>Each player uses a personal Player Area mat to track their stats, equipped cards, and held cards. The mat is divided into three zones.</p>
-    <img src="images/PlayerAreaV4.png" alt="Player Area Layout" class="lightbox-img" style="width: 100%; margin: 20px 0; display: block;">
-<p class="image-text">Click to enlarge.</p>
+    <img src="images/PlayerAreaV3.png" alt="Player Area Layout" style="width: 100%; margin: 20px 0; display: block;">
 
     <h3>Stat Zone (Left Column)</h3>
     <p>Six stat tracks run vertically down the left side of the mat, each with a die slot for tracking current point values: <span class="accent-pink">Might</span>, <span class="accent-pink">Speed</span>, <span class="accent-pink">Intelligence</span>, <span class="accent-pink">Willpower</span>, <span class="accent-pink">Charm</span>, and <span class="accent-pink">Luck</span>.</p>
@@ -481,10 +391,10 @@
         </tr>
     </table>
 
-    <h2 id="game-board">14. Board Layout — Game Board</h2>
+    <h2>14. Board Layout — Game Board</h2>
     <p>The shared Game Board contains all communal zones used during play. It is divided into four horizontal areas.</p>
-    <img src="images/GameBoardAreaV2.png" alt="Game Board Layout" class="lightbox-img" style="width: 100%; margin: 20px 0; display: block;">
-<p class="image-text">Click to enlarge.</p>
+    <img src="images/BoardGameArea V1.png" alt="Game Board Layout" style="width: 100%; margin: 20px 0; display: block;">
+
     <h3>Game Decks (Top Row)</h3>
     <p>All shuffled decks are placed along the top: <span class="accent-blue">Reward</span> (×3 draw piles), <span class="accent-blue">Reward Discard</span>, <span class="accent-blue">Challenge</span>, <span class="accent-blue">Monster</span>, <span class="accent-blue">Treasure</span>, <span class="accent-blue">Environment</span>, <span class="accent-blue">Tokens</span>, and <span class="accent-blue">Status</span>.</p>
 
@@ -528,41 +438,11 @@
         <p><strong>Game Over:</strong> Fail 3 challenges in a row, lose to a Floor Boss, or a TPK.</p>
     </div>
 
-        </div><!-- /.rules-content -->
-    </div><!-- /.rules-layout -->
-    </div><!-- /.content -->
-
-</div><!-- /.container -->
-
-<!-- Lightbox -->
-<div id="lightbox">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="">
 </div>
 
 <footer>
     &copy; 2026 VELADON MEDIA GROUP.
 </footer>
 
-    <script src="js/nav-component.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/rules-sidebar.js"></script>
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        document.querySelectorAll('.lightbox-img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('open');
-            });
-        });
-
-        function closeLightbox() { lightbox.classList.remove('open'); }
-        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-    </script>
 </body>
 </html>
