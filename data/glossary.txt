@@ -6,7 +6,11 @@
 
 **Accessory Slot:** Equipment slot for rings, amulets, trinkets (1 per player).
 
+**Aggro X:** Force X Monsters or Players to change their attack target to you.
+
 **AOE (Area of Effect):** Attacks or effects that hit multiple targets.
+
+**Arcane Tag:** Stat Tag requiring +3 Intelligence to reset. Found on magical weapons, robes, and spell-boosting abilities. Exhausts on use; resets at end of round if INT is +3 or higher.
 
 **Arms Slot:** Equipment slot for arm guards, bracers, sleeves (1 per player).
 
@@ -18,7 +22,7 @@
 
 **Base Damage:** The damage listed on a weapon/spell card before modifiers.
 
-**Berserker:** Keyword ability - when deals damage, immediately attack another random target.
+**Berserker:** When this deals damage, immediately attack another random target.
 
 **Block:** Armor value that reduces incoming damage (cannot reduce below 1).
 
@@ -26,17 +30,21 @@
 
 **Boss:** A special super-powered monster at the end of each Floor.
 
+**Burst:** Spells with Burst allow the player to commit any number of available dice when casting. All dice used this way are exhausted and impact an attribute of the spell. In some cases, using different dice or multiples of the same die will alter the spell's properties.
+
 ## C
 
 **Challenge:** An encounter the party must complete (Combat, Skill, or Hybrid).
 
+**Channel X:** To activate this spell, the player must spend X turns placing one die on the card per turn. Those dice cannot be used or reset until the spell is cast or channeling ends (dropped voluntarily or when the player takes damage). When the player starts their turn with X dice on the card, they may activate the spell without exhausting a die from the Active Dice Pool. The player takes -2 Attack Damage for each die currently on the card. In some cases, using different dice or multiples of the same die will alter the spell's properties.
+
 **Charm (Ch):** A stat used for social abilities and Clone Token scaling.
 
-**Clone Token:** A Charm-based summoned ally.
+**Clone Token:** A Charm-based summoned ally. Counters = Ch. Stats: 1 HP, 1 Block, 1 + X DMG.
+
+**Cooldown X:** After using this card, it cannot be used again for X Rounds. Cooldown 1 means available next Round; Cooldown 2 requires waiting 2 Rounds.
 
 **Critical Hit:** Rolling natural max on die = double damage.
-
-**Co-op:** Cooperative - players work together to win.
 
 ## D
 
@@ -44,11 +52,13 @@
 
 **Death:** Reaching 0 HP - player is knocked out, respawns after Challenge.
 
-**Dice Affinity:** Recommended die to use with a card (listed on card).
+**Demoralize X:** X target Monsters' next attack deals -3 damage.
+
+**Dice Affinity:** Recommended die to use with a card. When a card references a die bonus, it appears as [DX] (e.g., [D8], [D20]).
 
 **Dice Pool:** The collection of dice a player owns (max 6).
 
-**Difficulty Mode:** Easy/Medium/Hard - chosen at game start, affects draft count and trading.
+**Discard:** Permanently remove a card from your hand or inventory to activate its effect. Discarded cards go to the Discard Pile.
 
 **Discard Pile:** Where used/discarded cards go (communal, can buy from here).
 
@@ -56,17 +66,15 @@
 
 ## E
 
-**Easy Mode:** Reward Draft difficulty - draw 6 cards, free trading.
-
 **Enhancements:** Card type that permanently modifies stats (90 in Floor 1). Never go in inventory - attach to character forever.
 
 **Environment:** A card that affects all participants in a Challenge.
 
 **Equipment Slot:** Body location where gear is equipped (Head/Body/Arms/Legs/Hands/Accessory).
 
-**Evasive:** Keyword ability - gain +1 Block per Miss (resets each Round).
+**Evasive:** Gain +1 Block per Miss (resets each Round).
 
-**Exhaust:** Rotating a card sideways - cannot use again this Round.
+**Exhaust:** Rotate a card sideways to activate its effect — it cannot be used again until reset (end of Round, or by a reset effect).
 
 **Exhausted Dice Pool:** Area of player board where used dice go. Dice reset at end of turn/round.
 
@@ -74,11 +82,17 @@
 
 **Failure:** Not completing a Challenge's Win Condition (or time limit reached).
 
+**Fancy Tag:** Stat Tag requiring +3 Charm to reset. Found on stylish weapons, fashionable armor, and performance abilities. Exhausts on use; resets at end of round if Charm is +3 or higher.
+
 **Favors:** Card type with one-time powerful effects from production/audience (18 in Floor 1). Can be used in Green Room or Challenge. Stay in inventory until used.
+
+**Finesse Tag:** Stat Tag requiring +3 Speed to reset. Found on agile abilities and light weapons requiring precision. Exhausts on use; resets at end of round if Speed is +3 or higher.
 
 **Floor:** A set of 6 Challenges + 1 Boss (game has 3 Floors).
 
 **Free Action:** Action that doesn't cost resources (communicate, check stats, etc.).
+
+**Fumble:** Rolling a natural 1 on an attack die. The attack fails and may trigger an additional negative effect depending on the card or situation.
 
 ## G
 
@@ -86,15 +100,17 @@
 
 **Green Room:** Safe zone between Challenges where players rest, shop, and prepare.
 
-**Guardian Token:** A Willpower-based summoned ally.
+**Guard +X:** Spend your Action to gain +X additional Block until the start of your next turn.
+
+**Guardian Token:** A Willpower-based summoned ally. Counters = WP. Stats: 1 HP, 1 + X Block, 1 DMG.
 
 ## H
 
 **Hands Slots:** Equipment slots for weapons, shields, gloves (2 per player).
 
-**Hard Mode:** Reward Draft difficulty - draw 4 cards, no trading.
-
 **Head Slot:** Equipment slot for helmets, hats, hoods (1 per player).
+
+**Heavy Tag:** Stat Tag requiring +3 Might to reset. Found on raw power weapons, brutal armor, and strength-based abilities. Exhausts on use; resets at end of round if Might is +3 or higher.
 
 **High Test:** Skill Test where you ADD stat to roll (trying to roll high).
 
@@ -114,7 +130,7 @@
 
 ## K
 
-**Keyword Ability:** A special monster ability (Berserker, Pack Hunter, Evasive, etc.).
+**Keyword Ability:** A special ability found on Monster cards (Berserker, Pack Hunter, Evasive, etc.).
 
 **Kits:** Card type - large equipment usable only in Green Room (15 in Floor 1). Requires die sacrifice (move to exhaust without rolling). Provides buff until end of next Challenge.
 
@@ -134,8 +150,6 @@
 
 **Main Action:** An action that requires a resource (die, HP, Gold, etc.).
 
-**Medium Mode:** Reward Draft difficulty - draw 5 cards, 5G to trade.
-
 **Might (M):** A stat used for weapon attacks.
 
 **Miss:** Rolling natural 1 on die = attack fails (no damage).
@@ -144,11 +158,15 @@
 
 ## P
 
-**Pack Hunter:** Keyword ability - +2 damage per allied monster.
+**Pack Hunter:** +2 damage per allied monster in play.
 
 **Phase:** A section of Boss behavior based on HP thresholds.
 
-**Poison:** Keyword ability - on hit, target takes 2 HP/turn for 3 rounds.
+**Poison:** On hit, target takes 2 HP/turn for 3 rounds.
+
+**Prep:** Found on Kit cards. The listed buff is applied at the start of the next Challenge. Example: "Prep: +1 Might" means you begin the next Challenge with +1 Might.
+
+**Prone X:**  Target cannot make any actions until it exhausts X Dice to remove the status effect.
 
 ## R
 
@@ -156,7 +174,7 @@
 
 **Recall:** Voluntarily exiting a Challenge (counts as Failure).
 
-**Regeneration:** Keyword ability - heal X HP at start of turn.
+**Regeneration:** Heal X HP at the start of each turn.
 
 **Resting Roll:** Rolling one of your dice to heal HP in Green Room (FREE, no cost).
 
@@ -164,13 +182,17 @@
 
 **Reward Draft:** Drafting cards after a Challenge (Easy/Medium/Hard modes).
 
+**Risky Tag:** Stat Tag requiring +3 Luck to reset. Found on gambling abilities, fortune-based items, and high-stakes maneuvers. Exhausts on use; resets at end of round if Luck is +3 or higher.
+
 **Round:** A full cycle where every participant takes 1 turn.
 
 ## S
 
-**Skeleton Token:** An INT-based summoned ally.
+**Sacred Tag:** Stat Tag requiring +3 Willpower to reset. Found on holy spells, divine abilities, and spiritual techniques. Exhausts on use; resets at end of round if Willpower is +3 or higher.
 
 **Skill Challenge:** A Challenge requiring Stat Tests (non-combat).
+
+**Skeleton Token:** An INT-based summoned ally. Counters = INT. Stats: 1 + X HP, 1 Block, 1 DMG.
 
 **Skill Test:** Rolling a die + modding with a stat to achieve High or Low result.
 
@@ -180,19 +202,25 @@
 
 **Stat:** One of 6 attributes (Might, Speed, INT, Willpower, Charm, Luck).
 
-**Stat Tag:** A special property on cards that causes Exhaustion when used.
+**Stat Tag:** A special property on powerful cards. Cards with Stat Tags exhaust when used and can only be used once per turn. They reset at the end of the round if the player meets the required stat threshold. See individual Stat Tag entries (Arcane, Fancy, Finesse, Heavy, Risky, Sacred, Supernatural) for specific requirements.
 
 **Success:** Completing a Challenge's Win Condition.
+
+**Supernatural Tag:** Special Stat Tag requiring both +3 Intelligence AND +3 Willpower to reset. Found on the most powerful spells. Exhausts on use.
 
 ## T
 
 **Time Limit:** Maximum number of Rounds before a Challenge auto-fails.
 
-**Token:** A summoned ally creature (Skeleton, Clone, or Guardian).
+**Token:** A summoned ally creature. Three types exist, each scaling differently based on Counters (X):
+
+- **Clone Token** — Counters = Ch. Stats: 1 HP, 1 Block, 1 + X DMG
+- **Guardian Token** — Counters = WP. Stats: 1 HP, 1 + X Block, 1 DMG
+- **Skeleton Token** — Counters = INT. Stats: 1 + X HP, 1 Block, 1 DMG
 
 **Treasure:** Bonus loot randomly available in some Challenges.
 
-**Treasure Guardian:** Keyword ability - auto-succeed Treasure Roll on defeat.
+**Treasure Guardian:** Auto-succeed Treasure Roll on defeat.
 
 **Treasure Roll:** Rolling at Challenge start to determine if Treasure appears.
 
@@ -211,4 +239,3 @@
 **Win Condition:** What must be achieved to succeed at a Challenge.
 
 ---
-

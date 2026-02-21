@@ -9,12 +9,10 @@
 <body>
     <nav-component></nav-component>
 
-    <!-- Page Banner -->
     <div class="page-banner">
         <div class="page-banner-bg"></div>
         <div class="page-banner-overlay"></div>
 
-        <!-- Floating Accent Elements -->
         <div class="banner-accent banner-accent-1"></div>
         <div class="banner-accent banner-accent-2"></div>
         <div class="banner-accent banner-accent-3"></div>
@@ -29,7 +27,6 @@
     <div class="container">
         <div class="content">
 
-            <!-- ALPHABETICAL GLOSSARY -->
             <div class="glossary-section">
                 <h2>A</h2>
                 <div class="glossary-term">
@@ -39,10 +36,13 @@
                     <strong>Accessory Slot</strong>: Equipment slot for rings, amulets, trinkets (1 per player).
                 </div>
                 <div class="glossary-term">
+                    <strong>Aggro X</strong>: Force X Monsters or Players to change their attack target to you.
+                </div>
+                <div class="glossary-term">
                     <strong>AOE (Area of Effect)</strong>: Attacks or effects that hit multiple targets.
                 </div>
                 <div class="glossary-term">
-                    <strong>Arcane Tag</strong>: Stat Tag requiring +3 Intelligence to reset. Magical weapons, robes, spell-boosting abilities. Once per turn, exhausts on use. Examples: Wands, Arcane Robes, Magic Staff, "Quick Hands", "Brainstorm".
+                    <strong>Arcane Tag</strong>: Stat Tag requiring +3 Intelligence to reset. Found on magical weapons, robes, and spell-boosting abilities. Exhausts on use; resets at end of round if INT is +3 or higher.
                 </div>
                 <div class="glossary-term">
                     <strong>Arms Slot</strong>: Equipment slot for arm guards, bracers, sleeves (1 per player).
@@ -61,7 +61,7 @@
                     <strong>Base Damage</strong>: The damage listed on a weapon/spell card before modifiers.
                 </div>
                 <div class="glossary-term">
-                    <strong>Berserker</strong>: Keyword ability - when deals damage, immediately attack another random target.
+                    <strong>Berserker</strong>: When this deals damage, immediately attack another random target.
                 </div>
                 <div class="glossary-term">
                     <strong>Block</strong>: Armor value that reduces incoming damage (cannot reduce below 1).
@@ -72,6 +72,9 @@
                 <div class="glossary-term">
                     <strong>Boss</strong>: A special super-powered monster at the end of each Floor.
                 </div>
+                <div class="glossary-term">
+                    <strong>Burst</strong>: Spells with Burst allow the player to commit any number of available dice when casting. All dice used this way are exhausted and impact an attribute of the spell.
+                </div>
             </div>
 
             <div class="glossary-section">
@@ -80,16 +83,19 @@
                     <strong>Challenge</strong>: An encounter the party must complete (Combat, Skill, or Hybrid).
                 </div>
                 <div class="glossary-term">
+                    <strong>Channel X</strong>: To activate this spell, the player must spend X turns placing one die on the card per turn. When the player starts their turn with X dice on the card, they may activate the spell without exhausting a die from the Active Dice Pool. The player takes -2 Attack Damage for each die currently on the card.
+                </div>
+                <div class="glossary-term">
                     <strong>Charm (Ch)</strong>: A stat used for social abilities and Clone Token scaling.
                 </div>
                 <div class="glossary-term">
-                    <strong>Clone Token</strong>: A Charm-based summoned ally.
+                    <strong>Clone Token</strong>: A Charm-based summoned ally. Counters = Ch. Stats: 1 HP, 1 Block, 1 + X DMG.
+                </div>
+                <div class="glossary-term">
+                    <strong>Cooldown X</strong>: After using this card, it cannot be used again for X Rounds.
                 </div>
                 <div class="glossary-term">
                     <strong>Critical Hit</strong>: Rolling natural max on die = double damage.
-                </div>
-                <div class="glossary-term">
-                    <strong>Co-op</strong>: Cooperative - players work together to win.
                 </div>
             </div>
 
@@ -102,13 +108,16 @@
                     <strong>Death</strong>: Reaching 0 HP - player is knocked out, respawns after Challenge.
                 </div>
                 <div class="glossary-term">
-                    <strong>Dice Affinity</strong>: Recommended die to use with a card (listed on card).
+                    <strong>Demoralize X</strong>: X target Monsters' next attack deals -3 damage.
+                </div>
+                <div class="glossary-term">
+                    <strong>Dice Affinity</strong>: Recommended die to use with a card. When a card references a die bonus, it appears as [DX] (e.g., [D8], [D20]).
                 </div>
                 <div class="glossary-term">
                     <strong>Dice Pool</strong>: The collection of dice a player owns (max 6).
                 </div>
                 <div class="glossary-term">
-                    <strong>Difficulty Mode</strong>: Easy/Medium/Hard - chosen at game start, affects draft count and trading.
+                    <strong>Discard</strong>: Permanently remove a card from your hand or inventory to activate its effect. Discarded cards go to the Discard Pile.
                 </div>
                 <div class="glossary-term">
                     <strong>Discard Pile</strong>: Where used/discarded cards go (communal, can buy from here).
@@ -121,10 +130,7 @@
             <div class="glossary-section">
                 <h2>E</h2>
                 <div class="glossary-term">
-                    <strong>Easy Mode</strong>: Reward Draft difficulty - draw 6 cards, free trading.
-                </div>
-                <div class="glossary-term">
-                    <strong>Enhancements</strong>: Card type that permanently modifies stats (90 in Floor 1). Never go in inventory - attach to character forever.
+                    <strong>Enhancements</strong>: Card type that permanently modifies stats. Never go in inventory - attach to character forever.
                 </div>
                 <div class="glossary-term">
                     <strong>Environment</strong>: A card that affects all participants in a Challenge.
@@ -133,10 +139,10 @@
                     <strong>Equipment Slot</strong>: Body location where gear is equipped (Head/Body/Arms/Legs/Hands/Accessory).
                 </div>
                 <div class="glossary-term">
-                    <strong>Evasive</strong>: Keyword ability - gain +1 Block per Miss (resets each Round).
+                    <strong>Evasive</strong>: Gain +1 Block per Miss (resets each Round).
                 </div>
                 <div class="glossary-term">
-                    <strong>Exhaust</strong>: Rotating a card sideways - cannot use again this Round.
+                    <strong>Exhaust</strong>: Rotate a card sideways to activate its effect — it cannot be used again until reset.
                 </div>
                 <div class="glossary-term">
                     <strong>Exhausted Dice Pool</strong>: Area of player board where used dice go. Dice reset at end of turn/round.
@@ -149,19 +155,22 @@
                     <strong>Failure</strong>: Not completing a Challenge's Win Condition (or time limit reached).
                 </div>
                 <div class="glossary-term">
-                    <strong>Fancy Tag</strong>: Stat Tag requiring +3 Charm to reset. Stylish weapons, fashionable armor, performance abilities. Once per turn, exhausts on use. Examples: Fine Leather sets, RBF Knife, Brass Knuckles, "Mocking Words".
+                    <strong>Fancy Tag</strong>: Stat Tag requiring +3 Charm to reset. Found on stylish weapons, fashionable armor, and performance abilities. Exhausts on use; resets at end of round if Charm is +3 or higher.
                 </div>
                 <div class="glossary-term">
-                    <strong>Favors</strong>: Card type with one-time powerful effects from production/audience (18 in Floor 1). Can be used in Green Room or Challenge. Stay in inventory until used.
+                    <strong>Favors</strong>: Card type with one-time powerful effects. Stay in inventory until used.
                 </div>
                 <div class="glossary-term">
-                    <strong>Finesse Tag</strong>: Stat Tag requiring +3 Speed to reset. Agile abilities, light weapons requiring precision. Once per turn, exhausts on use. Examples: "On The Button", "Dodge", "Cheap Shot".
+                    <strong>Finesse Tag</strong>: Stat Tag requiring +3 Speed to reset. Found on agile abilities and light weapons requiring precision. Exhausts on use; resets at end of round if Speed is +3 or higher.
                 </div>
                 <div class="glossary-term">
                     <strong>Floor</strong>: A set of 6 Challenges + 1 Boss (game has 3 Floors).
                 </div>
                 <div class="glossary-term">
                     <strong>Free Action</strong>: Action that doesn't cost resources (communicate, check stats, etc.).
+                </div>
+                <div class="glossary-term">
+                    <strong>Fumble</strong>: Rolling a natural 1 on an attack die. The attack fails and may trigger an additional negative effect.
                 </div>
             </div>
 
@@ -174,7 +183,10 @@
                     <strong>Green Room</strong>: Safe zone between Challenges where players rest, shop, and prepare.
                 </div>
                 <div class="glossary-term">
-                    <strong>Guardian Token</strong>: A Willpower-based summoned ally.
+                    <strong>Guard +X</strong>: Spend your Action to gain +X additional Block until the start of your next turn.
+                </div>
+                <div class="glossary-term">
+                    <strong>Guardian Token</strong>: A Willpower-based summoned ally. Counters = WP. Stats: 1 HP, 1 + X Block, 1 DMG.
                 </div>
             </div>
 
@@ -184,13 +196,10 @@
                     <strong>Hands Slots</strong>: Equipment slots for weapons, shields, gloves (2 per player).
                 </div>
                 <div class="glossary-term">
-                    <strong>Hard Mode</strong>: Reward Draft difficulty - draw 4 cards, no trading.
-                </div>
-                <div class="glossary-term">
                     <strong>Head Slot</strong>: Equipment slot for helmets, hats, hoods (1 per player).
                 </div>
                 <div class="glossary-term">
-                    <strong>Heavy Tag</strong>: Stat Tag requiring +3 Might to reset. Raw power weapons, brutal armor, strength-based abilities. Once per turn, exhausts on use. Examples: Heavy Armor, Big Shield, "Big Hit" enhancement.
+                    <strong>Heavy Tag</strong>: Stat Tag requiring +3 Might to reset. Found on raw power weapons, brutal armor, and strength-based abilities. Exhausts on use; resets at end of round if Might is +3 or higher.
                 </div>
                 <div class="glossary-term">
                     <strong>High Test</strong>: Skill Test where you ADD stat to roll (trying to roll high).
@@ -222,10 +231,10 @@
             <div class="glossary-section">
                 <h2>K</h2>
                 <div class="glossary-term">
-                    <strong>Keyword Ability</strong>: A special monster ability (Berserker, Pack Hunter, Evasive, etc.).
+                    <strong>Keyword Ability</strong>: A special ability found on Monster cards (Berserker, Pack Hunter, Evasive, etc.).
                 </div>
                 <div class="glossary-term">
-                    <strong>Kits</strong>: Card type - large equipment usable only in Green Room (15 in Floor 1). Requires die sacrifice (move to exhaust without rolling). Provides buff until end of next Challenge.
+                    <strong>Kits</strong>: Card type - large equipment usable only in Green Room. Requires die sacrifice. Provides buff until end of next Challenge.
                 </div>
             </div>
 
@@ -254,9 +263,6 @@
                     <strong>Main Action</strong>: An action that requires a resource (die, HP, Gold, etc.).
                 </div>
                 <div class="glossary-term">
-                    <strong>Medium Mode</strong>: Reward Draft difficulty - draw 5 cards, 5G to trade.
-                </div>
-                <div class="glossary-term">
                     <strong>Might (M)</strong>: A stat used for weapon attacks.
                 </div>
                 <div class="glossary-term">
@@ -270,13 +276,19 @@
             <div class="glossary-section">
                 <h2>P</h2>
                 <div class="glossary-term">
-                    <strong>Pack Hunter</strong>: Keyword ability - +2 damage per allied monster.
+                    <strong>Pack Hunter</strong>: +2 damage per allied monster in play.
                 </div>
                 <div class="glossary-term">
                     <strong>Phase</strong>: A section of Boss behavior based on HP thresholds.
                 </div>
                 <div class="glossary-term">
-                    <strong>Poison</strong>: Keyword ability - on hit, target takes 2 HP/turn for 3 rounds.
+                    <strong>Poison</strong>: On hit, target takes 2 HP/turn for 3 rounds.
+                </div>
+                <div class="glossary-term">
+                    <strong>Prep</strong>: Found on Kit cards. The listed buff is applied at the start of the next Challenge.
+                </div>
+                <div class="glossary-term">
+                    <strong>Prone X</strong>: Target cannot make any actions until it exhausts X Dice to remove the status effect.
                 </div>
             </div>
 
@@ -289,7 +301,7 @@
                     <strong>Recall</strong>: Voluntarily exiting a Challenge (counts as Failure).
                 </div>
                 <div class="glossary-term">
-                    <strong>Regeneration</strong>: Keyword ability - heal X HP at start of turn.
+                    <strong>Regeneration</strong>: Heal X HP at the start of each turn.
                 </div>
                 <div class="glossary-term">
                     <strong>Resting Roll</strong>: Rolling one of your dice to heal HP in Green Room (FREE, no cost).
@@ -301,7 +313,7 @@
                     <strong>Reward Draft</strong>: Drafting cards after a Challenge (Easy/Medium/Hard modes).
                 </div>
                 <div class="glossary-term">
-                    <strong>Risky Tag</strong>: Stat Tag requiring +3 Luck to reset. Gambling abilities, fortune-based items, high-stakes maneuvers. Once per turn, exhausts on use. Examples: "Slay for Pay", lucky items.
+                    <strong>Risky Tag</strong>: Stat Tag requiring +3 Luck to reset. Found on gambling abilities, fortune-based items, and high-stakes maneuvers. Exhausts on use; resets at end of round if Luck is +3 or higher.
                 </div>
                 <div class="glossary-term">
                     <strong>Round</strong>: A full cycle where every participant takes 1 turn.
@@ -311,16 +323,16 @@
             <div class="glossary-section">
                 <h2>S</h2>
                 <div class="glossary-term">
-                    <strong>Skeleton Token</strong>: An INT-based summoned ally.
+                    <strong>Sacred Tag</strong>: Stat Tag requiring +3 Willpower to reset. Found on holy spells, divine abilities, and spiritual techniques. Exhausts on use; resets at end of round if Willpower is +3 or higher.
                 </div>
                 <div class="glossary-term">
                     <strong>Skill Challenge</strong>: A Challenge requiring Stat Tests (non-combat).
                 </div>
                 <div class="glossary-term">
-                    <strong>Skill Test</strong>: Rolling a die + modding with a stat to achieve High or Low result.
+                    <strong>Skeleton Token</strong>: An INT-based summoned ally. Counters = INT. Stats: 1 + X HP, 1 Block, 1 DMG.
                 </div>
                 <div class="glossary-term">
-                    <strong>Sacred Tag</strong>: Stat Tag requiring +3 Willpower to reset. Holy spells, divine abilities, spiritual techniques. Once per turn, exhausts on use. Examples: Healing spells, "Quick Wits", "Mind Power".
+                    <strong>Skill Test</strong>: Rolling a die + modding with a stat to achieve High or Low result.
                 </div>
                 <div class="glossary-term">
                     <strong>Speed (S)</strong>: A stat used for Initiative, Speed Tests, and some weapons.
@@ -332,10 +344,10 @@
                     <strong>Stat</strong>: One of 6 attributes (Might, Speed, INT, Willpower, Charm, Luck).
                 </div>
                 <div class="glossary-term">
-                    <strong>Stat Tag</strong>: Special gameplay tags (Heavy, Finesse, Arcane, Sacred, Fancy, Risky, Supernatural) on powerful cards. Cards with Stat Tags can only be used once per turn and exhaust when used. Reset at end of round if you have +3 or higher in the required stat. See detailed Stat Tags section above for full mechanics and strategy.
+                    <strong>Stat Tag</strong>: A special property on powerful cards. Cards with Stat Tags exhaust when used and can only be used once per turn. Reset at end of round if required stat is met.
                 </div>
                 <div class="glossary-term">
-                    <strong>Supernatural Tag</strong>: SPECIAL Stat Tag requiring BOTH +3 Intelligence AND +3 Willpower to reset. Most demanding stat tag. Powerful spells like Blood Magic, Necromancy, Invisibility. Once per turn, exhausts on use.
+                    <strong>Supernatural Tag</strong>: Special Stat Tag requiring both +3 Intelligence AND +3 Willpower to reset. Found on the most powerful spells. Exhausts on use.
                 </div>
                 <div class="glossary-term">
                     <strong>Success</strong>: Completing a Challenge's Win Condition.
@@ -348,13 +360,18 @@
                     <strong>Time Limit</strong>: Maximum number of Rounds before a Challenge auto-fails.
                 </div>
                 <div class="glossary-term">
-                    <strong>Token</strong>: A summoned ally creature (Skeleton, Clone, or Guardian).
+                    <strong>Token</strong>: A summoned ally creature. Scaling based on Counters (X):
+                    <ul style="margin-top: 10px; list-style-type: none; padding-left: 0;">
+                        <li>• <strong>Clone</strong> (Ch): 1 HP, 1 Block, 1 + X DMG</li>
+                        <li>• <strong>Guardian</strong> (WP): 1 HP, 1 + X Block, 1 DMG</li>
+                        <li>• <strong>Skeleton</strong> (INT): 1 + X HP, 1 Block, 1 DMG</li>
+                    </ul>
                 </div>
                 <div class="glossary-term">
                     <strong>Treasure</strong>: Bonus loot randomly available in some Challenges.
                 </div>
                 <div class="glossary-term">
-                    <strong>Treasure Guardian</strong>: Keyword ability - auto-succeed Treasure Roll on defeat.
+                    <strong>Treasure Guardian</strong>: Auto-succeed Treasure Roll on defeat.
                 </div>
                 <div class="glossary-term">
                     <strong>Treasure Roll</strong>: Rolling at Challenge start to determine if Treasure appears.
@@ -367,7 +384,7 @@
             <div class="glossary-section">
                 <h2>U</h2>
                 <div class="glossary-term">
-                    <strong>Unactivated Dice Pool</strong>: Area of player board where available/unused dice are kept. Dice move to Exhausted Pool when used.
+                    <strong>Unactivated Dice Pool</strong>: Area of player board where available/unused dice are kept.
                 </div>
             </div>
 

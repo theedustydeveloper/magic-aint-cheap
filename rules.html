@@ -42,6 +42,9 @@
         .treasure-test-row.pass { border-left-color: #4cdb8a; }
         .treasure-test-row.fail { border-left-color: var(--brand-pink); }
 
+        /* Mobile prose examples — hidden on desktop by default */
+        .example-mobile { display: none; }
+
         table { width: 100%; border-collapse: collapse; margin: 25px 0; border: 1px solid var(--brand-blue); }
         th { background: var(--brand-blue); color: var(--dark-bg); padding: 12px; text-align: left; }
         td { padding: 12px; border-bottom: 1px solid #9c9c9c; }
@@ -70,10 +73,7 @@
             letter-spacing: 2px !important;
             margin-top: 0 !important;
         }
-        .rules-sidebar .sidebar-nav li {
-            color: #fdf5e6 !important;
-            margin: 0 !important;
-        }
+        .rules-sidebar .sidebar-nav li { color: #fdf5e6 !important; margin: 0 !important; }
         .rules-sidebar .sidebar-nav a {
             color: #fdf5e6 !important;
             font-size: 0.85rem !important;
@@ -91,16 +91,12 @@
             background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
         }
         #lightbox.open { display: flex; }
-        #lightbox img {
-            max-width: 92vw; max-height: 90vh; object-fit: contain;
-            box-shadow: 0 0 60px rgba(0,0,0,0.8);
-        }
+        #lightbox img { max-width: 92vw; max-height: 90vh; object-fit: contain; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
         #lightbox-close {
             position: fixed; top: 1.25rem; right: 1.5rem; font-size: 2.5rem; line-height: 1;
             color: #fff; cursor: pointer; user-select: none; opacity: 0.8; transition: opacity 0.2s;
         }
         #lightbox-close:hover { opacity: 1; }
-
         .rules-sidebar .sidebar-nav a.active {
             background: rgba(255, 46, 140, 0.15) !important;
             border-left-color: #ff2e8c !important;
@@ -114,14 +110,37 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 0.75rem !important; }
-            .content   { padding: 1rem !important; }
+            .container  { padding: 0 0.75rem !important; }
+            .content    { padding: 1rem !important; }
             table { display: block !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
             .floor-grid { grid-template-columns: 1fr !important; }
             .formula    { font-size: 0.95em !important; letter-spacing: 0 !important; }
             .setup-step { padding-left: 45px !important; }
             h2 { margin-top: 30px !important; font-size: 1.2rem !important; }
             .example-grid { grid-template-columns: 1fr !important; }
+
+            /* Swap: hide step-by-step boxes, show prose on mobile */
+            .example-desktop { display: none !important; }
+            .example-mobile {
+                display: block !important;
+                background: rgba(253, 245, 230, 0.04);
+                border: 1px solid #555;
+                border-left: 4px solid var(--brand-pink);
+                padding: 16px 18px;
+                margin: 15px 0;
+                line-height: 1.75;
+            }
+            .example-mobile h4 {
+                color: var(--brand-pink);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 0.8em;
+                margin: 0 0 10px 0;
+            }
+            .example-mobile p { margin: 0 0 10px 0; font-size: 0.95em; }
+            .example-mobile p:last-child { margin-bottom: 0; }
+            .example-mobile .result-pass { color: #4cdb8a; font-weight: bold; }
+            .example-mobile .result-fail { color: var(--brand-pink); font-weight: bold; }
         }
     </style>
 </head>
@@ -155,6 +174,7 @@
                     <li><a href="#card-types">4. Card Types</a></li>
                     <li><a href="#skill-tests">5. Skill Tests</a></li>
                     <li><a href="#combat">6. Basic Actions</a></li>
+                    <li><a href="#combat-formula">7. Combat & Damage</a></li>
                     <li><a href="#dice-pool">8. Dice Pool</a></li>
                     <li><a href="#challenge-phase">9. Challenge Phase</a></li>
                     <li><a href="#green-room">10. Green Room</a></li>
@@ -189,41 +209,13 @@
     <h2 id="stats">3. Stats</h2>
     <p>Each stat influences specific card types, skill tests, and damage calculations. Stats improve through leveling and card effects.</p>
     <table>
-        <tr>
-            <th>Stat</th>
-            <th>Stat Tag</th>
-            <th>Primary Use</th>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Might (M)</span></td>
-            <td>Heavy</td>
-            <td>Melee damage, physical force, heavy weapon proficiency</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Speed (SP)</span></td>
-            <td>Finesse</td>
-            <td>Ranged damage, evasion, fast-action cards</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Intelligence (I)</span></td>
-            <td>Arcane</td>
-            <td>Spell damage, problem-solving, Arcane card requirements</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Willpower (WP)</span></td>
-            <td>Sacred</td>
-            <td>Spiritual power, status resistance, Sacred card requirements</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Charm (C)</span></td>
-            <td>Fancy</td>
-            <td>Performance, social manipulation, crowd-based abilities</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Luck (L)</span></td>
-            <td>Risky</td>
-            <td>Chance effects, Luck Clutch bonus, Risky card synergies</td>
-        </tr>
+        <tr><th>Stat</th><th>Stat Tag</th><th>Primary Use</th></tr>
+        <tr><td><span class="accent-pink">Might (M)</span></td><td>Heavy</td><td>Melee damage, physical force, heavy weapon proficiency</td></tr>
+        <tr><td><span class="accent-pink">Speed (SP)</span></td><td>Finesse</td><td>Ranged damage, evasion, fast-action cards</td></tr>
+        <tr><td><span class="accent-pink">Intelligence (I)</span></td><td>Arcane</td><td>Spell damage, problem-solving, Arcane card requirements</td></tr>
+        <tr><td><span class="accent-pink">Willpower (WP)</span></td><td>Sacred</td><td>Spiritual power, status resistance, Sacred card requirements</td></tr>
+        <tr><td><span class="accent-pink">Charm (C)</span></td><td>Fancy</td><td>Performance, social manipulation, crowd-based abilities</td></tr>
+        <tr><td><span class="accent-pink">Luck (L)</span></td><td>Risky</td><td>Chance effects, Luck Clutch bonus, Risky card synergies</td></tr>
     </table>
     <div class="highlight-box">
         <p><strong>Supernatural Tag:</strong> Some cards carry the <span class="accent-blue">Supernatural</span> tag, requiring <span class="accent-blue">+3 in both Intelligence and Willpower</span> to equip or activate.</p>
@@ -233,58 +225,17 @@
     <h2 id="card-types">4. Card Types & Limits</h2>
     <p>Cards fall into distinct types, each with its own equip slot rules and limits. You can only benefit from a card if you meet its requirements and have an open slot.</p>
     <table>
-        <tr>
-            <th>Card Type</th>
-            <th>Slot Limit</th>
-            <th>Notes</th>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Head</span></td>
-            <td>1</td>
-            <td>Helmets, masks, headgear</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Body</span></td>
-            <td>1</td>
-            <td>Armor, coats, chest pieces</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Arms</span></td>
-            <td>1</td>
-            <td>Bracers, gauntlets, sleeves</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Legs</span></td>
-            <td>1</td>
-            <td>Boots, greaves, lower gear</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Hands</span></td>
-            <td>2</td>
-            <td>Weapons, shields, held items — one per hand</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Accessory</span></td>
-            <td>2</td>
-            <td>Rings, charms, off-slot items</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Spell</span></td>
-            <td>Unlimited</td>
-            <td>Active magic abilities; require dice to cast</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Enhancement</span></td>
-            <td>Unlimited</td>
-            <td>Passive upgrades; apply automatically when equipped</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Kit</span></td>
-            <td>2 Max</td>
-            <td>Multi-function utility sets; each Kit counts as one slot</td>
-        </tr>
+        <tr><th>Card Type</th><th>Slot Limit</th><th>Notes</th></tr>
+        <tr><td><span class="accent-pink">Head</span></td><td>1</td><td>Helmets, masks, headgear</td></tr>
+        <tr><td><span class="accent-pink">Body</span></td><td>1</td><td>Armor, coats, chest pieces</td></tr>
+        <tr><td><span class="accent-pink">Arms</span></td><td>1</td><td>Bracers, gauntlets, sleeves</td></tr>
+        <tr><td><span class="accent-pink">Legs</span></td><td>1</td><td>Boots, greaves, lower gear</td></tr>
+        <tr><td><span class="accent-pink">Hands</span></td><td>2</td><td>Weapons, shields, held items — one per hand</td></tr>
+        <tr><td><span class="accent-pink">Accessory</span></td><td>2</td><td>Rings, charms, off-slot items</td></tr>
+        <tr><td><span class="accent-blue">Spell</span></td><td>Unlimited</td><td>Active magic abilities; require dice to cast</td></tr>
+        <tr><td><span class="accent-blue">Enhancement</span></td><td>Unlimited</td><td>Passive upgrades; apply automatically when equipped</td></tr>
+        <tr><td><span class="accent-blue">Kit</span></td><td>2 Max</td><td>Multi-function utility sets; each Kit counts as one slot</td></tr>
     </table>
-
     <div class="highlight-box">
         <h3>Hand Size</h3>
         <p>Your <strong>Hand Size</strong> determines how many cards you can hold at once outside of your equipped slots.</p>
@@ -308,66 +259,74 @@
     <h3>Skill Test Examples</h3>
     <p>The threshold is always the halfway point of the die, rounded up. A D6 requires <strong>4+</strong>, a D8 requires <strong>5+</strong>, a D12 requires <strong>7+</strong>, and a D20 requires <strong>11+</strong>.</p>
 
- 
-
-        <div class="example-box">
-            <h4>&#9654; Example — Shout Out (Low Call)</h4>
-            <p style="font-size:0.9em; color:#aaa; margin: 0 0 12px 0;">Mia wants to rally the crowd. She declares <strong>Low</strong> using <strong>Charm</strong>, rolling her D6. Threshold on a D6 is 4+, so Low means she needs <strong>3 or under</strong> after the Nudge.</p>
-            <div class="step-row"><span class="step-label">Call</span> Low &nbsp;|&nbsp; Stat: <span class="accent-pink">Charm +2</span></div>
-            <div class="step-row"><span class="step-label">Die</span> D6 &nbsp;|&nbsp; Target: <span class="accent-pink">3 or under</span></div>
-            <div class="step-row"><span class="step-label">Roll</span> <span class="roll-val">4</span></div>
-            <div class="step-row"><span class="step-label">Nudge</span> Charm +2 &nbsp;→&nbsp; 4 + 2 = <span class="roll-val">6</span></div>
-            <hr class="divider">
-            <div class="step-row"><span class="step-label">Result</span> <span class="result-fail">&#10007; FAIL</span> — Nudged result of 6 exceeds the Low target. No reward. Die exhausted.</div>
-        </div>
-
-        <div class="example-box">
-            <h4>&#9654; Example — Shout Out + Luck Clutch (High Call)</h4>
-            <p style="font-size:0.9em; color:#aaa; margin: 0 0 12px 0;">Kael calls <strong>High</strong> using <strong>Luck</strong> on his D12. He needs <strong>7+</strong>. The roll is rough — but he burns his Luck Clutch to pull through.</p>
-            <div class="step-row"><span class="step-label">Call</span> High &nbsp;|&nbsp; Stat: <span class="accent-pink">Luck +1</span></div>
-            <div class="step-row"><span class="step-label">Die</span> D12 &nbsp;|&nbsp; Target: <span class="accent-blue">7+</span></div>
-            <div class="step-row"><span class="step-label">Roll</span> <span class="roll-val">3</span></div>
-            <div class="step-row"><span class="step-label">Nudge</span> Luck +1 &nbsp;→&nbsp; 3 + 1 = <span class="roll-val">4</span></div>
-            <div class="step-row"><span class="step-label">Luck Clutch</span> Luck +3 &nbsp;→&nbsp; 4 + 3 = <span class="roll-val">7</span></div>
-            <hr class="divider">
-            <div class="step-row"><span class="step-label">Result</span> <span class="result-pass">&#10003; SUCCESS</span> — Hits exactly 7. Luck Clutch spent for the challenge. Kael takes <span class="accent-blue">10 Gold</span> or <span class="accent-blue">+1 Reward Draw</span>. Die exhausted.</div>
-        </div>
-
-
-
-    <div class="example-box">
-        <h4>&#9654; Treasure Skill Test — How It Differs</h4>
-        <p style="font-size:0.9em; color:#aaa; margin: 0 0 14px 0;">
-            Treasure tests use the <strong>same die for every test on the card</strong>, declared before flipping. You also choose one stat upfront — you cannot switch between tests. Treasure cards show a sequence of <strong>High</strong> (meet or beat the threshold) and <strong>Low</strong> (roll strictly under the threshold) tests. All tests must pass to claim the reward. Unlike a Shout Out, you do <strong>not</strong> call High or Low in advance — the card dictates the sequence.
-        </p>
-        <p style="font-size:0.9em; margin: 0 0 10px 0;"><strong>Setup:</strong> Ren spots a face-down Treasure card. She commits her D10 and declares <span class="accent-blue">Speed</span> as her stat (+2). The card is flipped — it shows two tests: <em>High, then Low</em>.</p>
-        <div class="step-row"><span class="step-label">Die</span> D10 &nbsp;|&nbsp; Threshold: <span class="accent-blue">6+</span> (High) &nbsp;/&nbsp; <span class="accent-pink">under 6</span> (Low)</div>
-
-        <div class="treasure-tests">
-            <div class="treasure-test-row pass">
-                <strong>Test 1 — High</strong> &nbsp;|&nbsp; Roll: <span class="roll-val">5</span> + Speed +2 = <span class="roll-val">7</span> &nbsp;→&nbsp; meets 6+ &nbsp;<span class="result-pass">&#10003; PASS</span>
+    <!-- DESKTOP: step-by-step example boxes -->
+    <div class="example-desktop">
+        <div class="example-grid">
+            <div class="example-box">
+                <h4>&#9654; Example — Shout Out (Low Call)</h4>
+                <p style="font-size:0.9em; color:#aaa; margin: 0 0 12px 0;">Mia wants to rally the crowd. She declares <strong>Low</strong> using <strong>Charm</strong>, rolling her D6. Threshold on a D6 is 4+, so Low means she needs <strong>3 or under</strong> after the Nudge.</p>
+                <div class="step-row"><span class="step-label">Call</span> Low &nbsp;|&nbsp; Stat: <span class="accent-pink">Charm +2</span></div>
+                <div class="step-row"><span class="step-label">Die</span> D6 &nbsp;|&nbsp; Target: <span class="accent-pink">3 or under</span></div>
+                <div class="step-row"><span class="step-label">Roll</span> <span class="roll-val">4</span></div>
+                <div class="step-row"><span class="step-label">Nudge</span> Charm +2 &nbsp;&#8594;&nbsp; 4 + 2 = <span class="roll-val">6</span></div>
+                <hr class="divider">
+                <div class="step-row"><span class="step-label">Result</span> <span class="result-fail">&#10007; FAIL</span> &mdash; Nudged result of 6 exceeds the Low target. No reward. Die exhausted.</div>
             </div>
-            <div class="treasure-test-row pass">
-                <strong>Test 2 — Low</strong> &nbsp;|&nbsp; Roll: <span class="roll-val">3</span> + Speed +2 = <span class="roll-val">5</span> &nbsp;→&nbsp; under 6 &nbsp;<span class="result-pass">&#10003; PASS</span>
+            <div class="example-box">
+                <h4>&#9654; Example — Shout Out + Luck Clutch (High Call)</h4>
+                <p style="font-size:0.9em; color:#aaa; margin: 0 0 12px 0;">Kael calls <strong>High</strong> using <strong>Luck</strong> on his D12. He needs <strong>7+</strong>. The roll is rough &mdash; but he burns his Luck Clutch to pull through.</p>
+                <div class="step-row"><span class="step-label">Call</span> High &nbsp;|&nbsp; Stat: <span class="accent-pink">Luck +1</span></div>
+                <div class="step-row"><span class="step-label">Die</span> D12 &nbsp;|&nbsp; Target: <span class="accent-blue">7+</span></div>
+                <div class="step-row"><span class="step-label">Roll</span> <span class="roll-val">3</span></div>
+                <div class="step-row"><span class="step-label">Nudge</span> Luck +1 &nbsp;&#8594;&nbsp; 3 + 1 = <span class="roll-val">4</span></div>
+                <div class="step-row"><span class="step-label">Luck Clutch</span> Luck +3 &nbsp;&#8594;&nbsp; 4 + 3 = <span class="roll-val">7</span></div>
+                <hr class="divider">
+                <div class="step-row"><span class="step-label">Result</span> <span class="result-pass">&#10003; SUCCESS</span> &mdash; Hits exactly 7. Luck Clutch spent for the challenge. Kael takes <span class="accent-blue">10 Gold</span> or <span class="accent-blue">+1 Reward Draw</span>. Die exhausted.</div>
             </div>
         </div>
 
-        <hr class="divider">
-        <div class="step-row"><span class="step-label">Result</span> <span class="result-pass">&#10003; CLAIMED</span> — Both tests passed. Reward granted. Die exhausted. Card shuffled back into the Treasure Deck.</div>
-        <p style="font-size:0.85em; color:#888; margin: 12px 0 0 0;">
-            <strong>On failure:</strong> If either test had failed, the die would still be exhausted — but the Treasure card would remain face-up in the arena for another player to attempt on their turn.
-        </p>
+        <div class="example-box">
+            <h4>&#9654; Treasure Skill Test — How It Differs</h4>
+            <p style="font-size:0.9em; color:#aaa; margin: 0 0 14px 0;">Treasure tests use the <strong>same die for every test on the card</strong>, declared before flipping. You also choose one stat upfront &mdash; you cannot switch between tests. Treasure cards show a sequence of <strong>High</strong> (meet or beat the threshold) and <strong>Low</strong> (roll strictly under the threshold) tests. All tests must pass to claim the reward. Unlike a Shout Out, you do <strong>not</strong> call High or Low in advance &mdash; the card dictates the sequence.</p>
+            <p style="font-size:0.9em; margin: 0 0 10px 0;"><strong>Setup:</strong> Ren spots a face-down Treasure card. She commits her D10 and declares <span class="accent-blue">Speed</span> as her stat (+2). The card is flipped &mdash; it shows two tests: <em>High, then Low</em>.</p>
+            <div class="step-row"><span class="step-label">Die</span> D10 &nbsp;|&nbsp; Threshold: <span class="accent-blue">6+</span> (High) &nbsp;/&nbsp; <span class="accent-pink">under 6</span> (Low)</div>
+            <div class="treasure-tests">
+                <div class="treasure-test-row pass">
+                    <strong>Test 1 &mdash; High</strong> &nbsp;|&nbsp; Roll: <span class="roll-val">5</span> + Speed +2 = <span class="roll-val">7</span> &nbsp;&#8594;&nbsp; meets 6+ &nbsp;<span class="result-pass">&#10003; PASS</span>
+                </div>
+                <div class="treasure-test-row pass">
+                    <strong>Test 2 &mdash; Low</strong> &nbsp;|&nbsp; Roll: <span class="roll-val">3</span> + Speed +2 = <span class="roll-val">5</span> &nbsp;&#8594;&nbsp; under 6 &nbsp;<span class="result-pass">&#10003; PASS</span>
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="step-row"><span class="step-label">Result</span> <span class="result-pass">&#10003; CLAIMED</span> &mdash; Both tests passed. Reward granted. Die exhausted. Card shuffled back into the Treasure Deck.</div>
+            <p style="font-size:0.85em; color:#888; margin: 12px 0 0 0;"><strong>On failure:</strong> If either test had failed, the die would still be exhausted &mdash; but the Treasure card would remain face-up in the arena for another player to attempt on their turn.</p>
+        </div>
     </div>
+    <!-- END DESKTOP -->
+
+    <!-- MOBILE: prose summaries (shown only below 768px via CSS) -->
+    <div class="example-mobile">
+        <h4>&#9654; Example — Shout Out (Low Call, Fail)</h4>
+        <p>Mia calls <strong>Low</strong> using <strong>Charm (+2)</strong> on a D6. Since a D6 has a threshold of 4+, calling Low means she needs her final nudged result to land at <strong>3 or under</strong>. She rolls a 4, then adds her +2 Charm bonus — landing on 6, which blows right past the Low target. <span class="result-fail">Fail.</span> No reward, die exhausted. This shows that your stat nudge can actually hurt you on a Low call, so pick your stat and die with care.</p>
+    </div>
+
+    <div class="example-mobile">
+        <h4>&#9654; Example — Shout Out + Luck Clutch (High Call, Success)</h4>
+        <p>Kael calls <strong>High</strong> using <strong>Luck (+1)</strong> on a D12. He needs a final result of <strong>7 or higher</strong>. His roll is a 3 — nudged to 4 with Luck, still short. He spends his once-per-challenge <strong>Luck Clutch</strong>, adding his full Luck stat of +3 to reach exactly 7. <span class="result-pass">Success.</span> He chooses between <strong>10 Gold</strong> or an extra <strong>Reward Card draw</strong>, then exhausts the die. Luck Clutch is spent for the rest of the challenge — use it wisely.</p>
+    </div>
+
+    <div class="example-mobile">
+        <h4>&#9654; Treasure Skill Test — How It Differs</h4>
+        <p>Unlike a Shout Out, you don't call High or Low on a Treasure test — the card tells you the sequence. You also commit your die and stat <em>before</em> flipping, and that same die and stat must carry through every test on the card. All tests must pass to claim the reward.</p>
+        <p>For example: Ren commits her D10 and declares <strong>Speed (+2)</strong>. The flipped card shows two tests — High then Low (threshold 6+ and under 6). Test 1 (High): she rolls a 5, nudges to 7 — <span class="result-pass">pass</span>. Test 2 (Low): she rolls a 3, nudges to 5 — <span class="result-pass">pass</span>. Both clear, reward granted, die exhausted. Had either test failed, the die would still be gone but the card would remain face-up for a teammate to try on their turn.</p>
+    </div>
+    <!-- END MOBILE -->
 
     <h2 id="combat">6. Basic Player Actions</h2>
     <p>On your turn during a Challenge, you may spend one die from your Inactivated Pool to perform one of the following actions. Unless stated otherwise, each action costs exactly one die.</p>
-
     <table>
-        <tr>
-            <th>Action</th>
-            <th>Cost</th>
-            <th>Effect</th>
-        </tr>
+        <tr><th>Action</th><th>Cost</th><th>Effect</th></tr>
         <tr>
             <td><span class="accent-pink">Attack</span></td>
             <td>1 Die</td>
@@ -386,7 +345,7 @@
         <tr>
             <td><span class="accent-blue">Attempt Treasure</span></td>
             <td>1 Die</td>
-            <td>Commit your die and a stat, then flip a Treasure card and resolve all Skill Tests. See Section 10 for full rules. Die exhausted regardless.</td>
+            <td>Commit your die and a stat, then flip a Treasure card and resolve all Skill Tests. See Section 11 for full rules. Die exhausted regardless.</td>
         </tr>
         <tr>
             <td><span class="accent-blue">Pass</span></td>
@@ -396,10 +355,9 @@
         <tr>
             <td><span class="accent-blue">Recall</span></td>
             <td>Free Action</td>
-            <td>Exit the arena and return to the Green Room with current HP and dice intact. No Gold or rewards earned. See Section 8.</td>
+            <td>Exit the arena and return to the Green Room with current HP and dice intact. No Gold or rewards earned. See Section 9.</td>
         </tr>
     </table>
-
     <div class="highlight-box">
         <p><em>Burst and Channel are special die actions available on certain cards. See the <strong>Keyword Ability Glossary</strong> for full rules.</em></p>
     </div>
@@ -417,21 +375,9 @@
     <h2 id="dice-pool">8. Dice Pool Management</h2>
     <p>Each player manages two personal die pools throughout a Challenge.</p>
     <table>
-        <tr>
-            <th>Pool</th>
-            <th>Status</th>
-            <th>Contents</th>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Inactivated</span></td>
-            <td>Ready to use</td>
-            <td>All dice begin here at the start of each Challenge</td>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Exhausted</span></td>
-            <td>Spent this Challenge</td>
-            <td>Dice move here after being rolled or spent on card effects</td>
-        </tr>
+        <tr><th>Pool</th><th>Status</th><th>Contents</th></tr>
+        <tr><td><span class="accent-blue">Inactivated</span></td><td>Ready to use</td><td>All dice begin here at the start of each Challenge</td></tr>
+        <tr><td><span class="accent-pink">Exhausted</span></td><td>Spent this Challenge</td><td>Dice move here after being rolled or spent on card effects</td></tr>
     </table>
     <div class="highlight-box">
         <h3>Refreshing Your Dice</h3>
@@ -440,7 +386,7 @@
             <li>Take <span class="accent-pink">1 Damage</span> (cannot be blocked or reduced).</li>
             <li>Move <strong>all</strong> dice from your Exhausted Pool back to your Inactivated Pool.</li>
         </ol>
-        <p>This Refresh cost is intentional — pushing past your limits has a price. Managing when to Refresh versus when to Recall is a key strategic decision.</p>
+        <p>This Refresh cost is intentional &mdash; pushing past your limits has a price. Managing when to Refresh versus when to Recall is a key strategic decision.</p>
     </div>
 
     <h2 id="challenge-phase">9. The Challenge Phase</h2>
@@ -448,12 +394,11 @@
     <ul>
         <li><strong>Completion (Success):</strong> The Monster/Objective is defeated or all secondary requirements are met within the time limit.</li>
         <li><strong>Termination (Failure):</strong> The party fails to meet Challenge requirements or a <strong>TPK</strong> occurs.</li>
-        <li><strong>Recall:</strong> Any player may <strong>Recall</strong> as a free action on their turn. Recalling removes that player from the active arena — they return to the <span class="accent-blue">Green Room</span> with their current HP and dice intact, preserving their resources but abandoning their teammates for the remainder of the Challenge. A Recalled player earns no Gold or rewards from that Challenge's outcome.</li>
+        <li><strong>Recall:</strong> Any player may <strong>Recall</strong> as a free action on their turn. Recalling removes that player from the active arena &mdash; they return to the <span class="accent-blue">Green Room</span> with their current HP and dice intact, preserving their resources but abandoning their teammates for the remainder of the Challenge. A Recalled player earns no Gold or rewards from that Challenge's outcome.</li>
     </ul>
 
     <h2 id="green-room">10. The Green Room & Resting Roll</h2>
-    <p>The <strong>Green Room</strong> is your safe zone between Challenges. No monsters, no time pressure — players freely equip cards, discuss strategy, and spend Gold here. The party decides when to leave.</p>
-
+    <p>The <strong>Green Room</strong> is your safe zone between Challenges. No monsters, no time pressure &mdash; players freely equip cards, discuss strategy, and spend Gold here. The party decides when to leave.</p>
     <h3>Green Room Phase Order</h3>
     <ol>
         <li>Resting Roll <em>(optional, per player)</em></li>
@@ -462,49 +407,23 @@
         <li>Party Discussion &amp; Ready Check</li>
         <li>Enter Next Challenge</li>
     </ol>
-
     <h3>Resting Roll</h3>
     <div class="highlight-box">
-        <p>Each player individually decides whether to rest. This is a personal choice — not a party vote.</p>
+        <p>Each player individually decides whether to rest. This is a personal choice &mdash; not a party vote.</p>
         <ol>
             <li><strong>Choose</strong> 1 die from your personal dice pool.</li>
             <li><strong>Roll</strong> the die. Heal HP equal to the result.</li>
             <li>HP cannot exceed your <strong>Max HP</strong>.</li>
-            <li>Rolling for a Resting Roll <span class="accent-blue">does NOT exhaust the die</span> — it is still available for the upcoming Challenge.</li>
+            <li>Rolling for a Resting Roll <span class="accent-blue">does NOT exhaust the die</span> &mdash; it is still available for the upcoming Challenge.</li>
         </ol>
         <p>The Resting Roll is <strong>free</strong>. The only risk is rolling low and healing less than expected. Higher dice offer bigger potential healing but no guarantee.</p>
     </div>
     <table>
-        <tr>
-            <th>Die Choice</th>
-            <th>Min Heal</th>
-            <th>Max Heal</th>
-            <th>Strategy</th>
-        </tr>
-        <tr>
-            <td>D4</td>
-            <td>1</td>
-            <td>4</td>
-            <td>Safe — low ceiling but consistent</td>
-        </tr>
-        <tr>
-            <td>D6 / D8</td>
-            <td>1</td>
-            <td>6–8</td>
-            <td>Balanced risk/reward</td>
-        </tr>
-        <tr>
-            <td>D12</td>
-            <td>1</td>
-            <td>12</td>
-            <td>Higher upside, moderate gamble</td>
-        </tr>
-        <tr>
-            <td>D20</td>
-            <td>1</td>
-            <td>20</td>
-            <td>High risk — could recover big or barely heal</td>
-        </tr>
+        <tr><th>Die Choice</th><th>Min Heal</th><th>Max Heal</th><th>Strategy</th></tr>
+        <tr><td>D4</td><td>1</td><td>4</td><td>Safe &mdash; low ceiling but consistent</td></tr>
+        <tr><td>D6 / D8</td><td>1</td><td>6&ndash;8</td><td>Balanced risk/reward</td></tr>
+        <tr><td>D12</td><td>1</td><td>12</td><td>Higher upside, moderate gamble</td></tr>
+        <tr><td>D20</td><td>1</td><td>20</td><td>High risk &mdash; could recover big or barely heal</td></tr>
     </table>
 
     <h2 id="treasure">11. Treasure Roll Rules</h2>
@@ -526,122 +445,78 @@
 
     <h2 id="floor-progression">13. Floor Progression & Win Condition</h2>
     <p>The game is structured across <strong>3 Floors</strong>, each containing 6 Challenges followed by a Floor Boss. Completing a Challenge grants a Reward Phase. Defeating the Final Boss on Floor 3 wins the game.</p>
-
     <div class="floor-grid">
         <div class="floor-card">
             <h3>Floor 1</h3>
             <ul>
                 <li>Start with <span class="accent-blue">1 Die</span></li>
-                <li>Challenges 1–3 → <strong>Level Up</strong> (gain 2nd die)</li>
-                <li>Challenges 4–6 → <strong>Floor Boss</strong></li>
-                <li>Defeat Boss → <strong>Level Up</strong> (gain 3rd die)</li>
+                <li>Challenges 1&ndash;3 &rarr; <strong>Level Up</strong> (gain 2nd die)</li>
+                <li>Challenges 4&ndash;6 &rarr; <strong>Floor Boss</strong></li>
+                <li>Defeat Boss &rarr; <strong>Level Up</strong> (gain 3rd die)</li>
             </ul>
         </div>
         <div class="floor-card">
             <h3>Floor 2</h3>
             <ul>
                 <li>Start with <span class="accent-blue">3 Dice</span></li>
-                <li>Challenges 1–3 → <strong>Level Up</strong> (gain 4th die)</li>
-                <li>Challenges 4–6 → <strong>Floor Boss</strong></li>
-                <li>Defeat Boss → <strong>Level Up</strong> (gain 5th die)</li>
+                <li>Challenges 1&ndash;3 &rarr; <strong>Level Up</strong> (gain 4th die)</li>
+                <li>Challenges 4&ndash;6 &rarr; <strong>Floor Boss</strong></li>
+                <li>Defeat Boss &rarr; <strong>Level Up</strong> (gain 5th die)</li>
             </ul>
         </div>
         <div class="floor-card floor-win">
-            <h3>Floor 3 — Final Run</h3>
+            <h3>Floor 3 &mdash; Final Run</h3>
             <ul>
                 <li>Start with <span class="accent-pink">5 Dice</span></li>
-                <li>Challenges 1–3 → <strong>Level Up</strong> (gain 6th die, MAX)</li>
-                <li>Challenges 4–6 → <strong>Final Boss</strong></li>
-                <li>Defeat Final Boss → <span class="accent-pink">Victory</span></li>
+                <li>Challenges 1&ndash;3 &rarr; <strong>Level Up</strong> (gain 6th die, MAX)</li>
+                <li>Challenges 4&ndash;6 &rarr; <strong>Final Boss</strong></li>
+                <li>Defeat Final Boss &rarr; <span class="accent-pink">Victory</span></li>
             </ul>
         </div>
     </div>
 
-    <h2 id="player-area">14. Board Layout — Player Area</h2>
+    <h2 id="player-area">14. Board Layout &mdash; Player Area</h2>
     <p>Each player uses a personal Player Area mat to track their stats, equipped cards, and held cards. The mat is divided into three zones.</p>
     <img src="images/PlayerAreaV4.png" alt="Player Area Layout" class="lightbox-img" style="width: 100%; margin: 20px 0; display: block;">
     <p class="image-text">Click to enlarge.</p>
-
     <h3>Stat Zone (Left Column)</h3>
     <p>Six stat tracks run vertically down the left side of the mat, each with a die slot for tracking current point values: <span class="accent-pink">Might</span>, <span class="accent-pink">Speed</span>, <span class="accent-pink">Intelligence</span>, <span class="accent-pink">Willpower</span>, <span class="accent-pink">Charm</span>, and <span class="accent-pink">Luck</span>.</p>
-
-    <h3>Equipment Zone (Center — Dashed Border)</h3>
+    <h3>Equipment Zone (Center &mdash; Dashed Border)</h3>
     <p>The bordered center section contains all physical equipment slots arranged across two rows:</p>
     <table>
-        <tr>
-            <th>Row</th>
-            <th>Slots</th>
-        </tr>
-        <tr>
-            <td>Top Row</td>
-            <td>Head, Body, L. Hand, Accessory</td>
-        </tr>
-        <tr>
-            <td>Bottom Row</td>
-            <td>Arms, Legs, R. Hand, Accessory</td>
-        </tr>
+        <tr><th>Row</th><th>Slots</th></tr>
+        <tr><td>Top Row</td><td>Head, Body, L. Hand, Accessory</td></tr>
+        <tr><td>Bottom Row</td><td>Arms, Legs, R. Hand, Accessory</td></tr>
     </table>
     <p>Only cards with matching Equipment types may be placed in these slots. The dashed border visually distinguishes equipped cards from held cards.</p>
-
     <h3>Card Zones (Right Side)</h3>
     <table>
-        <tr>
-            <th>Zone</th>
-            <th>Contents</th>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Kit Slots</span> (×2)</td>
-            <td>One slot per Kit, stacked vertically on the far right</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Spells</span></td>
-            <td>Wide horizontal slot for all currently equipped Spell cards</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Inventory</span> (Hand &amp; Tokens)</td>
-            <td>Holding area for unequipped hand cards and personal Token cards</td>
-        </tr>
+        <tr><th>Zone</th><th>Contents</th></tr>
+        <tr><td><span class="accent-blue">Kit Slots</span> (&times;2)</td><td>One slot per Kit, stacked vertically on the far right</td></tr>
+        <tr><td><span class="accent-blue">Spells</span></td><td>Wide horizontal slot for all currently equipped Spell cards</td></tr>
+        <tr><td><span class="accent-blue">Inventory</span> (Hand &amp; Tokens)</td><td>Holding area for unequipped hand cards and personal Token cards</td></tr>
     </table>
 
-    <h2 id="game-board">15. Board Layout — Game Board</h2>
+    <h2 id="game-board">15. Board Layout &mdash; Game Board</h2>
     <p>The shared Game Board contains all communal zones used during play. It is divided into four horizontal areas.</p>
     <img src="images/GameBoardAreaV2.png" alt="Game Board Layout" class="lightbox-img" style="width: 100%; margin: 20px 0; display: block;">
     <p class="image-text">Click to enlarge.</p>
-
     <h3>Game Decks (Top Row)</h3>
-    <p>All shuffled decks are placed along the top: <span class="accent-blue">Reward</span> (×3 draw piles), <span class="accent-blue">Reward Discard</span>, <span class="accent-blue">Challenge</span>, <span class="accent-blue">Monster</span>, <span class="accent-blue">Treasure</span>, <span class="accent-blue">Environment</span>, <span class="accent-blue">Tokens</span>, and <span class="accent-blue">Status</span>.</p>
-
+    <p>All shuffled decks are placed along the top: <span class="accent-blue">Reward</span> (&times;3 draw piles), <span class="accent-blue">Reward Discard</span>, <span class="accent-blue">Challenge</span>, <span class="accent-blue">Monster</span>, <span class="accent-blue">Treasure</span>, <span class="accent-blue">Environment</span>, <span class="accent-blue">Tokens</span>, and <span class="accent-blue">Status</span>.</p>
     <h3>Play Area (Center)</h3>
     <table>
-        <tr>
-            <th>Zone</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td><span class="accent-pink">Green Room</span></td>
-            <td>Left-side safe zone. Player tokens rest here between Challenges. No threats may enter this zone.</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Challenge Arena</span></td>
-            <td>The active combat space. Contains two sub-zones: <strong>Players/Player Tokens</strong> (left half) and <strong>Monsters/Asset Tokens</strong> (right half).</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Environment Track</span></td>
-            <td>Vertical track on the right edge of the Arena. Tracks the active Environment card's escalating effects.</td>
-        </tr>
-        <tr>
-            <td><span class="accent-blue">Initiative Tracker</span></td>
-            <td>Vertical track alongside the Environment. Determines turn order within the Challenge.</td>
-        </tr>
+        <tr><th>Zone</th><th>Description</th></tr>
+        <tr><td><span class="accent-pink">Green Room</span></td><td>Left-side safe zone. Player tokens rest here between Challenges. No threats may enter this zone.</td></tr>
+        <tr><td><span class="accent-blue">Challenge Arena</span></td><td>The active combat space. Contains two sub-zones: <strong>Players/Player Tokens</strong> (left half) and <strong>Monsters/Asset Tokens</strong> (right half).</td></tr>
+        <tr><td><span class="accent-blue">Environment Track</span></td><td>Vertical track on the right edge of the Arena. Tracks the active Environment card's escalating effects.</td></tr>
+        <tr><td><span class="accent-blue">Initiative Tracker</span></td><td>Vertical track alongside the Environment. Determines turn order within the Challenge.</td></tr>
     </table>
-
     <h3>Floor Tracker (Bottom Row)</h3>
     <p>Tracks progress through the current Floor. Slots run left to right in the following order:</p>
     <div class="formula" style="font-size: 1em; letter-spacing: 1px;">
-        Challenge 1 → Challenge 2 → Challenge 3 → <span class="accent-blue">Level Up</span> → Challenge 4 → Challenge 5 → Challenge 6 → <span class="accent-pink">Boss Challenge</span> → <span class="accent-blue">Level Up</span>
+        Challenge 1 &rarr; Challenge 2 &rarr; Challenge 3 &rarr; <span class="accent-blue">Level Up</span> &rarr; Challenge 4 &rarr; Challenge 5 &rarr; Challenge 6 &rarr; <span class="accent-pink">Boss Challenge</span> &rarr; <span class="accent-blue">Level Up</span>
     </div>
     <p>The <strong>Mode</strong> tracker (E / M / H) and <strong>Floor</strong> tracker (1 / 2 / 3) are located in the bottom-left corner.</p>
-
     <h3>Token Bank (Far Right Column)</h3>
     <p>Three reserve pools are stacked vertically on the right edge of the board: <span class="accent-blue">Dice Bank</span> (spare dice for new players or replacements), <span class="accent-blue">HP Tokens</span>, and <span class="accent-blue">Gold Tokens</span>.</p>
 

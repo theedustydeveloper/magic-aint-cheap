@@ -151,7 +151,7 @@
     "Treasure_Chance": "25%",
     "Monsters": "Goblin Warrior",
     "Monster_Count_1-2P": "1",
-    "Monster_Count_3-4P": "1",
+    "Monster_Count_3-4P": "2",
     "HP_Scaling": "2\u00d7 HP (1-2P) / 4\u00d7 HP (3-4P)",
     "Special_Monster_Rules": "Single tough enemy",
     "Objects": "None",

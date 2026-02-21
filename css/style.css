@@ -496,8 +496,7 @@ tbody td {
 }
 
 .card-cost {
-    display: inline-block;
-    background: var(--gray-800);
+background:oklch(0.75 0.15 92.31);
     color: var(--white);
     padding: 0.3rem 1rem;
     font-size: 0.85rem;
@@ -513,8 +512,8 @@ tbody td {
     justify-content: space-between;
     padding: 0.75rem;
     margin: 0.5rem 0;
-    background: var(--gray-100);
-    border-left: 3px solid var(--black);
+    background: oklch(0.96 0 0);
+    border: 3px solid var(--black);
 }
 
 .card-stat-label {
